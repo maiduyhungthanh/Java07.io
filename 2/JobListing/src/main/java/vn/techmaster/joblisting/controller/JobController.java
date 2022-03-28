@@ -81,9 +81,8 @@ public class JobController {
   //@RequestParam(value = "location",required=true) Location location,
   @GetMapping("/query")
   public List<Job> getKeyWordByLocation(@RequestParam Location location,@RequestParam String keyword){
-    // query = "query";
-    //location = Location.DaNang;
-    return jobs.values().stream().filter(n ->n.getTitle().toLowerCase().contains(keyword.toLowerCase())||n.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+    return jobs.values().stream().filter(n ->n.getTitle().toLowerCase().contains(keyword.toLowerCase())||n.getDescription().toLowerCase().contains(keyword.toLowerCase())
+    ||n.getLocation().equals(location))
     .collect(Collectors.toList());
   }
 }
