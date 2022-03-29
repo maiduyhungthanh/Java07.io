@@ -1,21 +1,15 @@
 package vn.techmaster.joblisting.controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.springframework.context.annotation.Description;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.techmaster.joblisting.model.Job;
@@ -78,11 +72,10 @@ public class JobController {
   }
 
   //http://localhost:8080/job/query?location={location}&keyword={keyword} tìm các job mà title hoặc description chứa {keyword} đồng thời location ={location}
-  //@RequestParam(value = "location",required=true) Location location,
   @GetMapping("/query")
   public List<Job> getKeyWordByLocation(@RequestParam Location location,@RequestParam String keyword){
-    return jobs.values().stream().filter(n ->n.getTitle().toLowerCase().contains(keyword.toLowerCase())||n.getDescription().toLowerCase().contains(keyword.toLowerCase())
-    ||n.getLocation().equals(location))
+    return jobs.values().stream().filter(n ->n.getTitle().toLowerCase().contains(keyword.toLowerCase()) && n.getLocation().equals(location)||n.getDescription().toLowerCase().contains(keyword.toLowerCase())&& n.getLocation().equals(location)
+    )
     .collect(Collectors.toList());
   }
 }
