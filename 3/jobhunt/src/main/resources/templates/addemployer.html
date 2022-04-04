@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Them Nha Tuyen Dung</h1>
+    <form th:action="@{/save}" th:object="${employer}" method="POST">
+        <pre>
+        <input type="hidden" placeholder="Id" th:field="*{id}" />
+   
+        <SPan>Ten cong ty   </SPan><input type="text" placeholder="Name" th:field="*{name}" />
+     
+        <Span>Email cong ty </Span><input type="text" placeholder="Email" th:field="*{email}"/>
+         
+        <button type="submit">Luu</button> <button><a href="/">Quay lai</a></button>
+    </pre>
+    </form>
+</body>
+
+</html>

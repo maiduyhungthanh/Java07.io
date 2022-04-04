@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="/">Trang chu</a></button>
+    <button><a href="/addemployer">Them nha tuyen dung</a> </button>
+    <H1>LIST EMPLOYER</H1>
+    <table>
+        <tr>
+            <th>Ten Cty</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="e, iStat:${emp}">
+            <td th:text ="${e.name}"></td>
+            <td th:text="${e.email}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
