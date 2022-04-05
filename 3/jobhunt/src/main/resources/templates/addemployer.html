@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Them Nha Tuyen Dung</h1>
+    <h1 id="title">Them Nha Tuyen Dung</h1>
     <form th:action="@{/save}" th:object="${employer}" method="POST">
         <pre>
         <input type="hidden" placeholder="Id" th:field="*{id}" />
@@ -18,9 +18,21 @@
      
         <Span>Email cong ty </Span><input type="text" placeholder="Email" th:field="*{email}"/>
          
-        <button type="submit">Luu</button> <button><a href="/">Quay lai</a></button>
+        <button type="submit">Luu</button>  <button><a href="/">Trang chu</a></button>  <button><a href="/employer">Danh sach</a></button>
     </pre>
     </form>
+    <script>
+        var x = location.href;
+        console.log(x)
+        const title = document.getElementById("title");
+        const edit = "edit";
+        console.log(title.innerText);
+        for (let i=x.length-1;i>=0;i--){
+        if(x.endsWith(edit,i+1)){
+            title.innerText="Chinh Sua Thong Tin";
+        }
+    }
+    </script>
 </body>
 
 </html>

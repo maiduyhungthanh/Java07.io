@@ -22,7 +22,14 @@ public class EmployerRepository {
     public List<Employer> getEmployers(){
         return listEmployer.values().stream().toList();
     }
-
+    //danh sach id
+    public List<String> getIdEmployers(){
+        return listEmployer.keySet().stream().toList();
+    }
+    //tìm theo id
+    public Employer findById(String id){
+        return listEmployer.get(id);
+    }
     // tao Employer new
     public Employer createEmployer(Employer employerNew){
         String uuid = UUID.randomUUID().toString();
@@ -31,16 +38,17 @@ public class EmployerRepository {
         return employerNew;
     }
 
-//     // Sua Employer
-//     public Employer updateEmployerById(String id,String name,String email) {
-//       Employer updateEmployer = new Employer(id, name, email);
-//       listEmployer.replace(id, updateEmployer);
-//       return updateEmployer;
-//     }
+    // Sua Employer
+    public Employer updateEmployerById(Employer employerInput,String id) {
+      Employer updateEmployer = listEmployer.get(id);
+      updateEmployer.setName(employerInput.getName());
+      updateEmployer.setEmail(employerInput.getEmail());
+      return updateEmployer;
+    }
   
-//     // Xoa Employer
-//     public Employer deleteEmployerById(String id) {
-//         Employer removedEmployer = listEmployer.remove(id);
-//         return removedEmployer;
-//     }
+    // Xoa Employer
+    public List<Employer> deleteEmployerById(String id) {
+        listEmployer.remove(id);
+        return listEmployer.values().stream().toList();
+    }
 }

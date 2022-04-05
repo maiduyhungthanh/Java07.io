@@ -5,19 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- dùng icon  -->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
 </head>
 <body>
     <button><a href="/">Trang chu</a></button>
     <button><a href="/addemployer">Them nha tuyen dung</a> </button>
-    <H1>LIST EMPLOYER</H1>
-    <table>
+    <H1>DANH SACH NHA TUYEN DUNG</H1>
+    
+    <table style="margin-left: 50px;">
         <tr>
+           
             <th>Ten Cty</th>
             <th>Email</th>
+            <th style="padding: 30px;">Sua</th>
+            <th style="padding: 30px;">Xoa</th>
+      
         </tr>
+        
         <tr th:each="e, iStat:${emp}">
             <td th:text ="${e.name}"></td>
             <td th:text="${e.email}"></td>
+            <td style="padding: 30px;"><a th:href="@{/edit/{id}(id=${e.id})}"><i class="fas fa-user-edit"></i></a></td>
+            <td style="padding: 30px;"><a th:href="@{/delete/{id}(id=${e.id})}"><i class="fas fa-user-times ml-2"></i></a></td>
         </tr>
     </table>
 
