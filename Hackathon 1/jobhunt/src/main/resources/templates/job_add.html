@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="title">Them Nha Tuyen Dung</h1>
+    <div><a href="/">Trang chủ</a></div> 
+     <div><a href="/job">Danh sách Job</a></div>
+    <form th:action="@{/savejob}" th:object="${job}" method="POST">
+        <pre>
+        <input type="hidden" placeholder="Id" th:field="*{id}" />
+   
+        <Span>Ten cong ty        </Span><select th:field ="*{employer}"><br><br>
+                                                <option value="">-- Chọn Công ty --</option>
+                                                <option 
+                                                th:each="company:${name}" 
+                                                th:text="${company.name}" 
+                                                th:value="${company.name}" ></option>
+                                                 </select>
+     
+        <Span>Tiêu đề            </Span><input type="text" placeholder="Tiêu đề" th:field="*{title}"/>
+         
+        <Span>Mô tả              </Span><input style="row-gap: 10px;" type="text" placeholder="Mô tả" th:field="*{description}"/>
+
+        <Span>Địa chỉ tuyển dụng </Span><select th:field ="*{city}"><br><br>
+            <option value="">-- Địa chỉ --</option>
+            <option 
+            th:each="city:${city}" 
+            th:text="${city.label}" 
+            th:value="${city.label}" ></option>
+          </select>
+      
+          <!-- <select>
+            <option th:each="state : ${T(vn.techmaster.jobhunt.model;).values()}"
+                    th:value="${state}"
+                    th:text="${state}">
+            </option>
+        </select> -->
+ 
+        <a><button type="submit">LƯU</button> </a> 
+    </pre>
+    </form>
+    
+    <script>
+        var x = location.href;
+        console.log(x)
+        const title = document.getElementById("title");
+        const edit = "editjob";
+        console.log(title.innerText);
+        for (let i=x.length-1;i>=0;i--){
+        if(x.endsWith(edit,i+1)){
+            title.innerText="Chỉnh Sửa Thông Tin";
+        }
+    }
+    
+    </script>
+
+
+</body>
+
+</html>
