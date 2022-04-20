@@ -10,9 +10,9 @@
     
     <img th:src="${'/logo/'+ e.logo}" alt="logo" width="80px" height="80px">
     <p  th:text="'Name: '+${e.name}"></p>
-    <p th:text="'Web: '+${e.web}"></p>
+    <a th:href="${e.web}"><p th:text="'Web: '+${e.web}"></p></a>
     <p th:text="'Email: '+${e.email}"></p>
-    
+    <!-- <a th:href="'employer/'+${job.emp_id}|" th:text="${job.employer}"></a> -->
 
 </body>
 </html>
