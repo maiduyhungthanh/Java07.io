@@ -5,17 +5,12 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import vn.techmaster.job_hunt.model.City;
-import vn.techmaster.job_hunt.model.Employer;
 import vn.techmaster.job_hunt.model.Job;
-import vn.techmaster.job_hunt.request.EmployerRequest;
 import vn.techmaster.job_hunt.request.JobRequest;
 import vn.techmaster.job_hunt.request.SearchRequest;
 import vn.techmaster.job_hunt.respository.ApplicantRepo;
@@ -34,7 +29,7 @@ public class JobController {
 
     @GetMapping()
     public String pageJob(Model model){
-        
+        model.addAttribute("searchRequest", new SearchRequest());
         model.addAttribute("jobs", jobRepo.getAll());
         model.addAttribute("employers", empRepo.getAllEmployerHashMap());
         model.addAttribute("totalApplicantMap", applicantRepo.countApplicantsTotal());
@@ -43,9 +38,8 @@ public class JobController {
 
 
     @GetMapping(value = "/search")
-    public String searchKeyword(@RequestParam(required = false) String keyword
-            , @RequestParam(required = false) City city, Model model) {
-        model.addAttribute("jobs", jobRepo.filterJob(new SearchRequest(keyword, city)));
+    public String searchKeyword(@RequestBody @ModelAttribute("searchRequest") SearchRequest searchRequest , Model model) {
+        model.addAttribute("jobs", jobRepo.filterJob(searchRequest));
         model.addAttribute("employers", empRepo.getAllEmployerHashMap());
         model.addAttribute("totalApplicantMap", applicantRepo.countApplicantsTotal());
         return "job_home";
@@ -65,6 +59,7 @@ public class JobController {
         Job job = jobRepo.findById(id);
         model.addAttribute("job", job);
         model.addAttribute("employer", empRepo.findById(job.getEmp_id()));
+        model.addAttribute("applicants", applicantRepo.findById(id));
         return "job_apply";
     }
 

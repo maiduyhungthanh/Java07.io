@@ -16,4 +16,5 @@ public class Employer {
   private String logo_path;
   private String website;
   private String email;
+  private String slogan;
 }

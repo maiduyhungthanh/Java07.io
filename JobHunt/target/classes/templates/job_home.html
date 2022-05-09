@@ -8,20 +8,20 @@
 
 <div class="row">
     <div class="col-lg-8 mt-5">
-        <form  th:action="@{/job/search}" method="get">
+        <form  th:action="@{/job/search}" method="get" th:object="${searchRequest}">
             <div class="form-group row mt-3">
                 <div class="col-sm-6">
-                    <input type="text" name="keyword" th:value="${keyword}" class="form-control" id="description" autocomplete="off" placeholder="Key job title" />
+                    <input type="text" name="keyword" th:value="*{keyword}" class="form-control" id="description" autocomplete="off" placeholder="Key job title" />
                 </div>
                 <div class="col-sm-4">
-                    <select  name="city">
-                        <option value="">-Thành phố-</option>
+                    <select  th:field="*{city}">
+                        <option value="">-All City-</option>
                         <option  th:each="state : ${T(vn.techmaster.job_hunt.model.City).values()}" th:value="${state}"
                                 th:text="${state.label}">
                         </option>
                     </select>
                 </div>
-                <div style="margin-left: -200px" class="col-sm-2">
+                <div style="margin-left: -400px" class="col-sm-2">
                     <button  class="btn btn-primary" type="submit">Search</button>
                 </div>
             </div>

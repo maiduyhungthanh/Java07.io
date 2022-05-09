@@ -92,7 +92,9 @@ public class EmployerRepo {
         .name("FPT")
         .website("https://fpt.com.vn")
         .logo_path("fpt.png")
-        .email("bdoremonllk@gmail.com").build(),
+        .email("bdoremonllk@gmail.com")
+        .slogan("fpt la so 1")
+        .build(),
         Job.builder()
             .title("Fullstack Java Developer")
             .description("Remote fulltime")
@@ -177,7 +179,9 @@ public class EmployerRepo {
         .name("CMC")
         .website("https://cmc.com.vn")
         .logo_path("cmc.png")
-        .email("bdoremonllk@gmail.com").build(),
+        .email("bdoremonllk@gmail.com")
+        .slogan("cmc la so 1")
+        .build(),
         Job.builder()
             .title("Backend C# Developer")
             .description("Long time job")
@@ -265,7 +269,9 @@ public class EmployerRepo {
         .name("AMAZON")
         .website("https://amazon.com")
         .logo_path("amazon.png")
-        .email("bdoremonllk@gmail.com").build(),
+        .email("bdoremonllk@gmail.com")
+        .slogan("amazon number ONE")
+        .build(),
         Job.builder()
             .title("Automation Tester ")
             .description("Remote fulltime")
@@ -354,7 +360,9 @@ public class EmployerRepo {
         .name("GOOGLE")
         .website("https://google.com")
         .logo_path("google.png")
-        .email("bdoremonllk@gmail.com").build(),
+        .email("bdoremonllk@gmail.com")
+        .slogan("google is best")
+        .build(),
         Job.builder()
             .title("React Developer")
             .description("Remote fulltime")

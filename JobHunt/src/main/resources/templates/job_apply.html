@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${employer.name}"></title>
+</head> -->
+
+<head th:replace="template.html :: header(${job.title})">
+</head>
+
+<body>
+  <header th:insert="template.html :: topmenu"> </header>
+
+  <div class="container">
+    <nav aria-label="breadcrumb" style="margin-bottom: 40px;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" style="font-weight: 400; "><a th:href="@{/job}">Home</a></li>
+        <li class="breadcrumb-item" style="font-weight: 400; "><a th:href="@{/job}">Jobs</a></li>
+        <li class="breadcrumb-item active" aria-current="page" style="font-weight: 600; color: #000">Detail</li>
+      </ol>
+    </nav>
+    <!-- employer info -->
+    <div class="row" style="width: 70%">
+      <div class="col-md">
+        <img th:src="|/logo/${employer.logo_path}|" width="400" />
+       
+      </div>
+      <div>
+        <h3 th:text="${employer.name}" style="width: 80%">Name</h3>
+    </div>
+    <div>
+        <p th:text="${employer.slogan}">tieu de</p>
+    </div>
+      <div>
+        <button class="btn btn-info "> <a style="text-decoration: none"  th:href="|/employer/${employer.id}|">Visit Website</a> </button>
+      </div>
+    
+    </div>
+    <br>
+    <table class="table table-bordered" style="width: 70%">
+      <tbody>
+        <tr>
+          <th scope="row" style="width: 20%">Employer Name</th>
+          <td th:text="${employer.name}" style="width: 80%">Name</td>
+        </tr>
+        <tr>
+          <th scope="row">Website</th>
+          <td th:text="${employer.website}">Website</td>
+        </tr>
+        <tr>
+          <th scope="row">Email</th>
+          <td th:text="${employer.email}">Email</td>
+        </tr>
+            <!-- job info -->
+            <tr>
+              <td colspan="2"  class="text-center">JOB INFO</td>
+            </tr>
+        <tr>
+          <th scope="row" style="width: 20%">Title</th>
+          <td th:text="${job.title}" style="width: 80%">Title</td>
+        </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td th:text="${job.description}">Description</td>
+        </tr>
+        <tr>
+          <th scope="row">City</th>
+          <td th:text="${job.city.label}">City</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <div>
+        <button class="btn btn-info "> <a style="text-decoration: none"  th:href="|/applicant/apply/${job.id}|">Apply</a> </button>
+        <button class="btn btn-info " type="button" onclick="quay_lai_trang_truoc()">Back</button>
+      </div>
+    
+    
+    
+    
+  </div>
+  <script>
+    function quay_lai_trang_truoc(){
+        history.back();
+    }
+</script>
+  <header th:replace="template.html :: footer"> </header>
+</body>
+
+</html>
