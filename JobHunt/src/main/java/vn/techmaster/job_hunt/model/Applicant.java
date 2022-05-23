@@ -2,6 +2,7 @@ package vn.techmaster.job_hunt.model;
 
 import java.util.List;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class Applicant {
+    
 
     /**
      * Thêm sửa xoá Applicant:

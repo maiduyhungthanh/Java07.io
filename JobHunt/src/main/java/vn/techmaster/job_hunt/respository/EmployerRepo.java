@@ -27,12 +27,10 @@ public class EmployerRepo {
   @Autowired
   private ApplicantRepo applicantRepo;
 
-  public ConcurrentHashMap<String,Employer> getAllEmployerHashMap(){
+  public ConcurrentHashMap<String, Employer> getAllEmployerHashMap() {
     return employers;
   }
-  
- 
-  
+
   public EmployerRepo() {
 
   }
@@ -79,7 +77,7 @@ public class EmployerRepo {
 
   public void edit(Employer employer) {
     employers.put(employer.getId(), employer);
-}
+  }
 
   public Employer deleteById(String id) {
     // var emp = employers.get(id);
@@ -105,75 +103,74 @@ public class EmployerRepo {
             .title("02 Fullstack Java Developer")
             .description("Remote fulltime")
             .city(City.DaNang).build());
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("02 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("02 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("02 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("02 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("02 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("02 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("FPT").iterator().next(),
         Job.builder()
             .title("03 Fullstack Java Developer")
             .description("Remote fulltime")
             .city(City.DaNang).build());
-            //Add more Apllicant for 03 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("03 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 03 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("03 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("03 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("03 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("03 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("03 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
     jobRepo.addJobForEmployer(this.findByName("FPT").iterator().next(),
         Job.builder()
             .title("04 Fullstack Java Developer")
             .description("Remote fulltime")
             .city(City.DaNang).build());
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("04 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("04 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("04 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("04 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("04 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("04 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
     //
     this.add(Employer.builder()
         .name("CMC")
@@ -193,25 +190,25 @@ public class EmployerRepo {
             .title("05 Fullstack Java Developer")
             .description("Remote fulltime")
             .city(City.DaNang).build());
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("05 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("05 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("05 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("05 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("05 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("05 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("CMC").iterator().next(),
         Job.builder()
@@ -219,25 +216,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("06 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("06 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("06 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("06 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("06 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("06 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("CMC").iterator().next(),
         Job.builder()
@@ -245,25 +242,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("07 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("07 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("07 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("07 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("07 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("07 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     this.add(Employer.builder()
         .name("AMAZON")
@@ -284,25 +281,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("08 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("08 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("08 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("08 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("08 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("08 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("AMAZON").iterator().next(),
         Job.builder()
@@ -310,25 +307,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("09 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("09 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("09 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("09 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("09 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("09 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("AMAZON").iterator().next(),
         Job.builder()
@@ -336,25 +333,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("10 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("10 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("10 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("10 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("10 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("10 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     this.add(Employer.builder()
         .name("GOOGLE")
@@ -375,25 +372,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("11 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("11 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("11 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("11 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("11 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("11 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("GOOGLE").iterator().next(),
         Job.builder()
@@ -401,25 +398,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("12 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("12 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("12 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("12 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("12 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("12 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
     jobRepo.addJobForEmployer(this.findByName("GOOGLE").iterator().next(),
         Job.builder()
@@ -427,25 +424,25 @@ public class EmployerRepo {
             .description("Remote fulltime")
             .city(City.DaNang).build());
 
-            //Add more Apllicant for 02 Fullstack Java Developer
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("13 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+    // Add more Apllicant for 02 Fullstack Java Developer
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("13 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura01@gmail.com")
             .name("Nakamura01")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("13 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("13 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura02@gmail.com")
             .name("Nakamura02")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
-            applicantRepo.addApplicantForJob(jobRepo.findByTitle("13 Fullstack Java Developer").iterator().next(), 
-            Applicant.builder()
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+    applicantRepo.addApplicantForJob(jobRepo.findByTitle("13 Fullstack Java Developer").iterator().next(),
+        Applicant.builder()
             .email("nakamura03@gmail.com")
             .name("Nakamura03")
             .phone("0977342466")
-            .skills( new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
+            .skills(new ArrayList<Skill>(EnumSet.allOf(Skill.class))).build());
 
   }
 
