@@ -1,6 +1,7 @@
 package vn.techmaster.mp3.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
@@ -10,14 +11,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import vn.techmaster.mp3.dto.SingerDto;
-import vn.techmaster.mp3.mapper.SingerMapper;
 import vn.techmaster.mp3.model.Singer;
 import vn.techmaster.mp3.model.Song;
 import vn.techmaster.mp3.model.SongSinger;
 import vn.techmaster.mp3.repository.SingerRepo;
 import vn.techmaster.mp3.repository.SongRepo;
-import vn.techmaster.mp3.request.SingerRequest;
 
 @Service
 public class SongSingerService {
@@ -85,14 +83,14 @@ public class SongSingerService {
         return songRepo.findAll();
     }
 
-    public SingerDto createSinger(SingerRequest request) {
-        Singer singer = new Singer();
-        singer.setId(UUID.randomUUID().toString());
-        singer.setName(request.getName());
-        // singer.setAvatar(request.getAvatar());
-        em.persist(singer);
-        em.flush();
+    public Singer singerAdd(Singer singer) {
+        String id = UUID.randomUUID().toString();
+        singer.setId(id);
+        singerRepo.save(singer);
+        return singer;
+    }
 
-        return SingerMapper.toSingerDto(singer);
+    public Optional<Singer> findById(String id){
+        return singerRepo.findAll().stream().filter(singer -> singer.getId()==id).findFirst();
     }
 }   
