@@ -14,6 +14,7 @@ import vn.techmaster.relation.model.manymany.noextracolumns.Article;
 import vn.techmaster.relation.model.manymany.noextracolumns.Tag;
 import vn.techmaster.relation.model.manymany.separate_primary_key.Student;
 import vn.techmaster.relation.model.manymany.separate_primary_key.Subject;
+import vn.techmaster.relation.model.onemany.bidirection.Address;
 import vn.techmaster.relation.model.onemany.bidirection.Customer;
 import vn.techmaster.relation.model.onemany.bidirection.Post;
 import vn.techmaster.relation.model.oneone.User;
@@ -24,6 +25,7 @@ import vn.techmaster.relation.service.inheritance.singletable.EletronicsService;
 import vn.techmaster.relation.service.inheritance.tableperclass.AnimalService;
 import vn.techmaster.relation.service.manymany.ArticleTagService;
 import vn.techmaster.relation.service.manymany.StudentSubjectService;
+import vn.techmaster.relation.service.onemany.bidirection.AddressService;
 import vn.techmaster.relation.service.onemany.bidirection.CustomerAddressService;
 import vn.techmaster.relation.service.onemany.bidirection.PostService;
 import vn.techmaster.relation.service.oneone.UserService;
@@ -50,8 +52,9 @@ public class APIController {
   
   @Autowired private EletronicsService electronicsService;
 
-
   @Autowired private AnimalService animalService;
+
+  @Autowired private AddressService addressService;
 
 
 
@@ -64,7 +67,10 @@ public class APIController {
   public ResponseEntity<List<Customer>> getCustomer() {
     return ResponseEntity.ok().body(customerAddressService.getAll());
   }
-
+  @GetMapping("/address")
+  public ResponseEntity<List<Address>> getAddress() {
+    return ResponseEntity.ok().body(addressService.getAll());
+  }
   @GetMapping("/users")
   public ResponseEntity<List<User>> queryAllUsers() {
     return ResponseEntity.ok().body(userService.queryAll());

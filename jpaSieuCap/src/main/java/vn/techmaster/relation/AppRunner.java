@@ -9,6 +9,7 @@ import vn.techmaster.relation.service.inheritance.singletable.EletronicsService;
 import vn.techmaster.relation.service.inheritance.tableperclass.AnimalService;
 import vn.techmaster.relation.service.manymany.ArticleTagService;
 import vn.techmaster.relation.service.manymany.StudentSubjectService;
+import vn.techmaster.relation.service.onemany.bidirection.AddressService;
 import vn.techmaster.relation.service.onemany.bidirection.CustomerAddressService;
 import vn.techmaster.relation.service.onemany.bidirection.PostService;
 import vn.techmaster.relation.service.onemany.bidirection.ProfessorDepartmentService;
@@ -45,6 +46,9 @@ public class AppRunner implements CommandLineRunner {
   @Autowired private EletronicsService electronicsService;
 
   @Autowired private AnimalService animalService;
+
+  @Autowired private AddressService addressService;
+
 
   @Override
   public void run(String... args) throws Exception {

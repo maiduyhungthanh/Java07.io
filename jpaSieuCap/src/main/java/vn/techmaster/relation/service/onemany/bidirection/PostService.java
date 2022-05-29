@@ -11,12 +11,16 @@ import org.springframework.stereotype.Service;
 
 import vn.techmaster.relation.model.onemany.bidirection.Comment;
 import vn.techmaster.relation.model.onemany.bidirection.Post;
+import vn.techmaster.relation.repository.onemany.bidirection.CommentRepository;
 import vn.techmaster.relation.repository.onemany.bidirection.PostRepository;
 
 @Service
 public class PostService {
   @Autowired
   private PostRepository postRepo;
+
+  @Autowired
+  private CommentRepository commentRepo;
 
   @Transactional
   public void createPostAndComments() {
@@ -40,5 +44,5 @@ public class PostService {
     List<Post> result = postRepo.findAll();
     return result;
   }
-  
+
 }
