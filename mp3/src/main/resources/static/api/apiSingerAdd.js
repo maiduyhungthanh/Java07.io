@@ -13,37 +13,21 @@ const uploadFileAPI = file => {
 }
 // thêm singer nếu cập nhập ảnh
 let avatarSave;
-avatarEl.addEventListener("change" ,async function(event){
-    let file=event.target.files[0]
-try {
-    let res = await uploadFileAPI(file)
-    console.log(res)
-
-    avatarPreview.src = `${API_Singer}/image/${res.data}`
-    avatarSave=`uploads/${res.data}`
-    console.log(avatarSave)
-    console.log(avatarPreview.src)
-
-} catch (error) {
-    console.log(error)
-}
-btnSave.addEventListener("click", async function (event) {
+avatarEl.addEventListener("change", async function (event) {
+    let file = event.target.files[0]
     try {
-        let res = await axios.post(API_Singer, {
-            name: nameEl.value,
-            avatar: avatarSave
-        })
+        let res = await uploadFileAPI(file)
         console.log(res)
-        if (res.data) {
-            window.location.href = "/singer"
-        }
+
+        avatarPreview.src = `${API_Singer}/image/${res.data}`
+        console.log(avatarPreview.src)
+
     } catch (error) {
         console.log(error)
     }
-})})
+})
 
-console.log(avatarSave)
-
+console.log(avatarPreview.src)
 
 //Thêm Singer nếu không Update ảnh
 btnSave.addEventListener("click", async function (event) {
@@ -51,9 +35,8 @@ btnSave.addEventListener("click", async function (event) {
     try {
         let res = await axios.post(API_Singer, {
             name: nameEl.value,
-            avatar: "images/11.jpg"
+            avatar: avatarPreview.src
         })
-        console.log(res)
         if (res.data) {
             window.location.href = "/singer"
         }
@@ -62,3 +45,4 @@ btnSave.addEventListener("click", async function (event) {
     }
 
 })
+
