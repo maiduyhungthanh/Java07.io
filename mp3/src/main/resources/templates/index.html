@@ -11,7 +11,6 @@
   <script th:src="@{js/cufon-replace.js}" type="text/javascript"></script>
   <script type="text/javascript" th:src="@{js/sprites.js}"></script>
   <script type="text/javascript" th:src="@{js/jquery.jplayer.min.js}"></script>
-  <script type="text/javascript" th:src="@{js/jquery.jplayer.settings.js}"></script>
   <script type="text/javascript" th:src="@{js/gSlider.js}"></script>
   <script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
   <script type="text/javascript" th:src="@{js/jquery.prettyPhoto.js}"></script>
@@ -26,127 +25,128 @@
 
 
 
+
 </head>
 
 <body id="page1">
   <!-- START PAGE SOURCE -->
   <div id="main">
     <header>
-<!-- <Menu> -->
+      <!-- <Menu> -->
       <!-- <nav> -->
-        <nav class="main-nav--bg">
-          <div class="container main-nav">
-            <div class="main-nav-start">
+      <nav class="main-nav--bg">
+        <div class="container main-nav">
+          <div class="main-nav-start">
 
-              <div class="search-wrapper">
-                <span class="active"><a href="/index">Trang Chủ</a></span>
+            <div class="search-wrapper">
+              <span class="active"><a href="/">Trang Chủ</a></span>
 
-                <input type="text"  placeholder="Enter keywords ..." required >
-                <span style="margin-left: 15px;"><a href="audio.html">Album</a></span>
-                <span><a href="video.html">MV</a></span>
-                <span><a href="/singer">Ca sỹ</a></span>
-                <span><a href="tour-dates.html">Blog</a></span>
-                <span><a href="/contacts">Liên hệ</a></span>
-              </div>
-            </div>
-            <div class="main-nav-end">
-              <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-                <span class="sr-only">Toggle menu</span>
-                <span class="icon menu-toggle--gray" aria-hidden="true"></span>
-              </button>
-              <div class="lang-switcher-wrapper">
-                <button class="lang-switcher transparent-btn" type="button">
-                  EN
-                  <i data-feather="chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="lang-menu dropdown">
-                  <li><a href="##">English</a></li>
-                  <li><a href="##">French</a></li>
-                  <li><a href="##">Uzbek</a></li>
-                </ul>
-              </div>
-              <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
-                <span class="sr-only">Switch theme</span>
-                <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
-                <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
-              </button>
-              <div class="notification-wrapper">
-                <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
-                  <span class="sr-only">To messages</span>
-                  <span class="icon notification active" aria-hidden="true"></span>
-                </button>
-                <ul class="users-item-dropdown notification-dropdown dropdown">
-                  <li>
-                    <a href="##">
-                      <div class="notification-dropdown-icon info">
-                        <i data-feather="check"></i>
-                      </div>
-                      <div class="notification-dropdown-text">
-                        <span class="notification-dropdown__title">System just updated</span>
-                        <span class="notification-dropdown__subtitle">The system has been successfully upgraded. Read
-                          more
-                          here.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="##">
-                      <div class="notification-dropdown-icon danger">
-                        <i data-feather="info" aria-hidden="true"></i>
-                      </div>
-                      <div class="notification-dropdown-text">
-                        <span class="notification-dropdown__title">The cache is full!</span>
-                        <span class="notification-dropdown__subtitle">Unnecessary caches take up a lot of memory space
-                          and
-                          interfere ...</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="##">
-                      <div class="notification-dropdown-icon info">
-                        <i data-feather="check" aria-hidden="true"></i>
-                      </div>
-                      <div class="notification-dropdown-text">
-                        <span class="notification-dropdown__title">New Subscriber here!</span>
-                        <span class="notification-dropdown__subtitle">A new subscriber has subscribed.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="link-to-page" href="##">Go to Notifications page</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="nav-user-wrapper">
-                <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
-                  <span class="sr-only">My profile</span>
-                  <span class="nav-user-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-illustrated-02.png" alt="User name">
-                    </picture>
-                  </span>
-                </button>
-                <ul class="users-item-dropdown nav-user-dropdown dropdown">
-                  <li><a href="##">
-                      <i data-feather="user" aria-hidden="true"></i>
-                      <span>Profile</span>
-                    </a></li>
-                  <li><a href="##">
-                      <i data-feather="settings" aria-hidden="true"></i>
-                      <span>Account settings</span>
-                    </a></li>
-                  <li><a class="danger" href="##">
-                      <i data-feather="log-out" aria-hidden="true"></i>
-                      <span>Log out</span>
-                    </a></li>
-                </ul>
-              </div>
+              <input type="text" placeholder="Enter keywords ..." required>
+              <span style="margin-left: 15px;"><a href="audio.html">Album</a></span>
+              <span><a href="video.html">MV</a></span>
+              <span><a href="/singer">Ca sỹ</a></span>
+              <span><a href="tour-dates.html">Blog</a></span>
+              <span><a href="/contacts">Liên hệ</a></span>
             </div>
           </div>
-        </nav>
-        <!-- --------------- -->
+          <div class="main-nav-end">
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+              <span class="sr-only">Toggle menu</span>
+              <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+            </button>
+            <div class="lang-switcher-wrapper">
+              <button class="lang-switcher transparent-btn" type="button">
+                EN
+                <i data-feather="chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul class="lang-menu dropdown">
+                <li><a href="##">English</a></li>
+                <li><a href="##">French</a></li>
+                <li><a href="##">Uzbek</a></li>
+              </ul>
+            </div>
+            <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+              <span class="sr-only">Switch theme</span>
+              <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+              <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+            </button>
+            <div class="notification-wrapper">
+              <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
+                <span class="sr-only">To messages</span>
+                <span class="icon notification active" aria-hidden="true"></span>
+              </button>
+              <ul class="users-item-dropdown notification-dropdown dropdown">
+                <li>
+                  <a href="##">
+                    <div class="notification-dropdown-icon info">
+                      <i data-feather="check"></i>
+                    </div>
+                    <div class="notification-dropdown-text">
+                      <span class="notification-dropdown__title">System just updated</span>
+                      <span class="notification-dropdown__subtitle">The system has been successfully upgraded. Read
+                        more
+                        here.</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="##">
+                    <div class="notification-dropdown-icon danger">
+                      <i data-feather="info" aria-hidden="true"></i>
+                    </div>
+                    <div class="notification-dropdown-text">
+                      <span class="notification-dropdown__title">The cache is full!</span>
+                      <span class="notification-dropdown__subtitle">Unnecessary caches take up a lot of memory space
+                        and
+                        interfere ...</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="##">
+                    <div class="notification-dropdown-icon info">
+                      <i data-feather="check" aria-hidden="true"></i>
+                    </div>
+                    <div class="notification-dropdown-text">
+                      <span class="notification-dropdown__title">New Subscriber here!</span>
+                      <span class="notification-dropdown__subtitle">A new subscriber has subscribed.</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="link-to-page" href="##">Go to Notifications page</a>
+                </li>
+              </ul>
+            </div>
+            <div class="nav-user-wrapper">
+              <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
+                <span class="sr-only">My profile</span>
+                <span class="nav-user-img">
+                  <picture>
+                    <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
+                      src="./img/avatar/avatar-illustrated-02.png" alt="User name">
+                  </picture>
+                </span>
+              </button>
+              <ul class="users-item-dropdown nav-user-dropdown dropdown">
+                <li><a href="##">
+                    <i data-feather="user" aria-hidden="true"></i>
+                    <span>Profile</span>
+                  </a></li>
+                <li><a href="##">
+                    <i data-feather="settings" aria-hidden="true"></i>
+                    <span>Account settings</span>
+                  </a></li>
+                <li><a class="danger" href="##">
+                    <i data-feather="log-out" aria-hidden="true"></i>
+                    <span>Log out</span>
+                  </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- --------------- -->
 
       <h1><a href="/index">Lilly Watson</a></h1>
       <div class="header-slider">
@@ -213,75 +213,29 @@
           </div>
         </div>
         <!-- audio player end -->
-        <h2 class="pl">Gợi ý</h2>
+        <h2 class="pl">Danh Sách Phát</h2><br>
         <!-- <div class="table-border"> -->
-          <div class="users-table table-wrapper table-border">
-
-          <table class="posts-table">
-            <thead>
-              <tr class="users-table-info">
-                <th>
-                  <label class="users-table__checkbox ms-20">
-                    <input type="checkbox" class="check-all">Thumbnail
-                  </label>
-                </th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Status</th>
-                <th>Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <label class="users-table__checkbox">
-                    <input type="checkbox" class="check">
-                    <div class="categories-table-img">
-                      <picture>
-                        <source srcset="./img/categories/01.webp" type="image/webp"><img
-                          src="./img/categories/01.jpg" alt="category">
-                      </picture>
-                    </div>
-                  </label>
-                </td>
-                <td>
-                  Starting your traveling blog with Vasco
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-face-04.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-face-04.png" alt="User Name">
-                    </picture>
-                    Jenny Wilson
-                  </div>
-                </td>
-                <td><span class="badge-pending">Pending</span></td>
-                <td>17.04.2021</td>
-                <td>
-                  <span class="p-relative">
-                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                      <div class="sr-only">More info</div>
-                      <i data-feather="more-horizontal" aria-hidden="true"></i>
-                    </button>
-                    <ul class="users-item-dropdown dropdown">
-                      <li><a href="##">Edit</a></li>
-                      <li><a href="##">Quick edit</a></li>
-                      <li><a href="##">Trash</a></li>
-                    </ul>
-                  </span>
-                </td>
+          <div class="users-table  table-border" >
+            <table class="posts-table" >
+              <thead>
+                <tr class="users-table-info">
+                  <th>
+                    <label class="users-table__checkbox ms-20">
+                     Thumbnail
+                    </label>
+                  </th>
+                  <th>Tên bài hát</th>
+                  <th>Ca sỹ</th>
+                  <th>Lượt nghe</th>
+                </tr>
+              </thead>
+              <tbody id="song-table">
               </tr>
               <tr>
                 <td>
                   <label class="users-table__checkbox">
-                    <input type="checkbox" class="check">
                     <div class="categories-table-img">
-                      <picture>
-                        <source srcset="./img/categories/02.webp" type="image/webp"><img
-                          src="./img/categories/02.jpg" alt="category">
-                      </picture>
+                    <a href=""><img src="../images/01.jpg" alt=""></a>
                     </div>
                   </label>
                 </td>
@@ -290,263 +244,51 @@
                 </td>
                 <td>
                   <div class="pages-table-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-face-03.png" alt="User Name">
-                    </picture>
                     Annette Black
                   </div>
                 </td>
-                <td><span class="badge-pending">Pending</span></td>
-                <td>23.04.2021</td>
-                <td>
-                  <span class="p-relative">
-                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                      <div class="sr-only">More info</div>
-                      <i data-feather="more-horizontal" aria-hidden="true"></i>
-                    </button>
-                    <ul class="users-item-dropdown dropdown">
-                      <li><a href="##">Edit</a></li>
-                      <li><a href="##">Quick edit</a></li>
-                      <li><a href="##">Trash</a></li>
-                    </ul>
-                  </span>
-                </td>
+                <td><span class="badge-pending">1.000.000 view</span></td>
+        
+          
               </tr>
-              <tr>
-                <td>
-                  <label class="users-table__checkbox">
-                    <input type="checkbox" class="check">
-                    <div class="categories-table-img">
-                      <picture>
-                        <source srcset="./img/categories/03.webp" type="image/webp"><img
-                          src="./img/categories/03.jpg" alt="category">
-                      </picture>
+                <tr>
+                  <td>
+                    <label class="users-table__checkbox">
+                      <div class="categories-table-img">
+                        <picture>
+                          <source srcset="./img/categories/02.webp" type="image/webp"><img
+                            src="./img/categories/02.jpg" alt="category">
+                        </picture>
+                      </div>
+                    </label>
+                  </td>
+                  <td>
+                    Start a blog to reach your creative peak
+                  </td>
+                  <td>
+                    <div class="pages-table-img">
+                      Annette Black
                     </div>
-                  </label>
-                </td>
-                <td>
-                  Helping a local business reinvent itself
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-face-02.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-face-02.png" alt="User Name">
-                    </picture>
-                    Kathryn Murphy
-                  </div>
-                </td>
-                <td><span class="badge-active">Active</span></td>
-                <td>17.04.2021</td>
-                <td>
-                  <span class="p-relative">
-                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                      <div class="sr-only">More info</div>
-                      <i data-feather="more-horizontal" aria-hidden="true"></i>
-                    </button>
-                    <ul class="users-item-dropdown dropdown">
-                      <li><a href="##">Edit</a></li>
-                      <li><a href="##">Quick edit</a></li>
-                      <li><a href="##">Trash</a></li>
-                    </ul>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label class="users-table__checkbox">
-                    <input type="checkbox" class="check">
-                    <div class="categories-table-img">
-                      <picture>
-                        <source srcset="./img/categories/04.webp" type="image/webp"><img
-                          src="./img/categories/04.jpg" alt="category">
-                      </picture>
-                    </div>
-                  </label>
-                </td>
-                <td>
-                  Caring is the new marketing
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-face-05.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-face-05.png" alt="User Name">
-                    </picture>
-                    Guy Hawkins
-                  </div>
-                </td>
-                <td><span class="badge-active">Active</span></td>
-                <td>17.04.2021</td>
-                <td>
-                  <span class="p-relative">
-                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                      <div class="sr-only">More info</div>
-                      <i data-feather="more-horizontal" aria-hidden="true"></i>
-                    </button>
-                    <ul class="users-item-dropdown dropdown">
-                      <li><a href="##">Edit</a></li>
-                      <li><a href="##">Quick edit</a></li>
-                      <li><a href="##">Trash</a></li>
-                    </ul>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label class="users-table__checkbox">
-                    <input type="checkbox" class="check">
-                    <div class="categories-table-img">
-                      <picture>
-                        <source srcset="./img/categories/01.webp" type="image/webp"><img
-                          src="./img/categories/01.jpg" alt="category">
-                      </picture>
-                    </div>
-                  </label>
-                </td>
-                <td>
-                  How to build a loyal community online and offline
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-face-03.png" alt="User Name">
-                    </picture>
-                    Robert Fox
-                  </div>
-                </td>
-                <td><span class="badge-active">Active</span></td>
-                <td>17.04.2021</td>
-                <td>
-                  <span class="p-relative">
-                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                      <div class="sr-only">More info</div>
-                      <i data-feather="more-horizontal" aria-hidden="true"></i>
-                    </button>
-                    <ul class="users-item-dropdown dropdown">
-                      <li><a href="##">Edit</a></li>
-                      <li><a href="##">Quick edit</a></li>
-                      <li><a href="##">Trash</a></li>
-                    </ul>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label class="users-table__checkbox">
-                    <input type="checkbox" class="check">
-                    <div class="categories-table-img">
-                      <picture>
-                        <source srcset="./img/categories/03.webp" type="image/webp"><img
-                          src="./img/categories/03.jpg" alt="category">
-                      </picture>
-                    </div>
-                  </label>
-                </td>
-                <td>
-                  How to build a loyal community online and offline
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    <picture>
-                      <source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img
-                        src="./img/avatar/avatar-face-03.png" alt="User Name">
-                    </picture>
-                    Robert Fox
-                  </div>
-                </td>
-                <td><span class="badge-active">Active</span></td>
-                <td>17.04.2021</td>
-                <td>
-                  <span class="p-relative">
-                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                      <div class="sr-only">More info</div>
-                      <i data-feather="more-horizontal" aria-hidden="true"></i>
-                    </button>
-                    <ul class="users-item-dropdown dropdown">
-                      <li><a href="##">Edit</a></li>
-                      <li><a href="##">Quick edit</a></li>
-                      <li><a href="##">Trash</a></li>
-                    </ul>
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <!-- <table class="dates" cellpadding="0" cellspacing="0" border="0">
-            <tr class="thead">
-              <td class="col1">Ca Khúc</td>
-              <td class="col2">Ca Sỹ</td>
-              <td class="col3">Thông Tin</td>
-            </tr>
-            <tr class="even">
-              <td class="col1">
-                <a href="#" class="name">Xe Đạp</a><br>
-                <a href="#"><img th:src="@{images/lambada.jpg}" width="50px" height="50px" alt=""></a>
-              </td>
-              <td>
-                  <a href="#">Thùy Chi</a>
-                  <a href="#">M4U</a>
-              </td>
-              <td>
-                1k view
-              </td>
-            </tr>
-            <tr class>
-              <td class="col1">
-                <a href="#" class="name">Xe Đạp</a><br>
-                <a href="#"><img th:src="@{images/lambada.jpg}" width="50px" height="50px" alt=""></a>
-              </td>
-              <td>Thùy Chi <br>
-                  M4U
-              </td>
-              <td>
-                1k view
-              </td>
-            </tr>
-            <tr class="even">
-              <td class="col1">
-                <a href="#" class="name">Xe Đạp</a><br>
-                <a href="#"><img th:src="@{images/lambada.jpg}" width="50px" height="50px" alt=""></a>
-              </td>
-              <td>Thùy Chi <br>
-                  M4U
-              </td>
-              <td>
-                1k view
-              </td>
-              <tr >
-                <td class="col1">
-                  <a href="#" class="name">Xe Đạp</a><br>
-                  <a href="#"><img th:src="@{images/lambada.jpg}" width="50px" height="50px" alt=""></a>
-                </td>
-                <td>Thùy Chi <br>
-                    M4U
-                </td>
-                <td>
-                  1k view
-                </td>
-              </tr>
-          </table> -->
+                  </td>
+                  <td><span class="badge-pending">1.000.000 view</span></td>     
+                </tr>
+              </tbody>
+            </table>
         </div>
       </div>
       <div class="col-3">
-        Bảng xếp hạng
         <article class="white-block">
           <div class="top-cat-title">
-            <h3>Top categories</h3>
-            <p>28 Categories, 1400 Posts</p>
+            <h3>Bảng xếp hạng</h3>
           </div>
           <ul class="top-cat-list">
             <li>
               <a href="##">
                 <div class="top-cat-list__title">
-                  Lifestyle <span>8.2k</span>
+                  Lifestyle <span>10.2k</span>
                 </div>
                 <div class="top-cat-list__subtitle">
-                  Dailiy lifestyle articles <span class="purple">+472</span>
+                  Dailiy lifestyle articles <span class="purple">+472 comment</span>
                 </div>
               </a>
             </li>
@@ -622,16 +364,6 @@
             </li>
           </ul>
         </article>
-        <!-- <h2>Newsletter</h2>
-        <form action="#" id="subscribe">
-          <fieldset>
-            <label>
-              <input type="text">
-            </label>
-            <input type="submit" value="">
-          </fieldset>
-        </form> -->
-        <!-- <h2>Find Me</h2> -->
         <ul class="soc-ico">
           <li><a href="#"><img src="images/facebook.png" alt=""></a></li>
           <li><a href="#"><img src="images/twitter.png" alt=""></a></li>
@@ -687,6 +419,7 @@
       })
     })
   </script>
+
   <!-- END PAGE SOURCE -->
   <script th:src="@{js/script.js}"></script>
 
@@ -696,7 +429,7 @@
     <script th:src="@{js/feather.min.js}"></script>
     <!-- Custom scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script th:src="@{/js/song.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.jplayer.settings.js}"></script>
 </body>
 
 </html>

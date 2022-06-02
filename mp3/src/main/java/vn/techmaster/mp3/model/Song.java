@@ -26,14 +26,14 @@ public class Song implements Serializable{
     @Id
     private String id;
     private String name;
-    private String path;
+    private String mp3;
     private String avatar;
     private String lyric;
 
-    public Song(String name, String path, String avatar) {
+    public Song(String name, String mp3, String avatar) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        this.path = path;
+        this.mp3 = mp3;
         this.avatar = avatar;
     }
     // mot ca sy co nhieu bai hat
@@ -43,15 +43,21 @@ public class Song implements Serializable{
   
     @JsonGetter(value = "singers")
     @Transient
-    public Map<String, Integer> getStudents() {
-      Map<String, Integer> singerView = new HashMap<>();
-        songSingers.stream().forEach( songSinger -> {
-        singerView.put(songSinger.getSinger().getName(), songSinger.getView());
-              }
-      );
-      return singerView;
-            }
-    
+    // public Map<String, Integer> getStudents() {
+    //   Map<String, Integer> singerView = new HashMap<>();
+    //     songSingers.stream().forEach( songSinger -> {
+    //     singerView.put(songSinger.getSinger().getName(), songSinger.getView());
+    //           }
+    //   );
+    //   return singerView;
+    //         }
+    public List<Singer> getSingers(){
+      List<Singer> listSingers = new ArrayList<>();
+      songSingers.stream().forEach(songSinger->{
+        listSingers.add(songSinger.getSinger());
+      });
+      return listSingers;
+    }
 
 
 }

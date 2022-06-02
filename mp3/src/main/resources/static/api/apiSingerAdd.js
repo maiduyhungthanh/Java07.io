@@ -12,13 +12,11 @@ const uploadFileAPI = file => {
     return axios.post(`${API_Singer}/image`, formData);
 }
 // thêm singer nếu cập nhập ảnh
-let avatarSave;
 avatarEl.addEventListener("change", async function (event) {
     let file = event.target.files[0]
     try {
         let res = await uploadFileAPI(file)
         console.log(res)
-
         avatarPreview.src = `${API_Singer}/image/${res.data}`
         console.log(avatarPreview.src)
 
@@ -41,7 +39,7 @@ btnSave.addEventListener("click", async function (event) {
             window.location.href = "/singer"
         }
     } catch (error) {
-        console.log(error)
+        window.location.href = "/singer"
     }
 
 })

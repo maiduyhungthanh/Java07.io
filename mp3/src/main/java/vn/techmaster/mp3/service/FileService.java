@@ -37,7 +37,7 @@ public class FileService {
         }
     }
 
-    //định dạng file
+    //định dạng file phần ADD
     public String uploadImages(MultipartFile file){
         // Kiểm tra tên file
         String fileName = file.getOriginalFilename();
@@ -75,10 +75,10 @@ public class FileService {
 
     }
 
+    //Up Ảnh phẩn Edit
     public String uploadfile(String id, MultipartFile file) {
-        // Optional<Singer> singerOptional = songSingerService.findById(id);
-        // kiểm tra singer id
-        if(songSingerService.getSingerById(id)== null){
+        Optional<Singer> singerOptional = songSingerService.SingerById(id);
+        if(singerOptional.isEmpty()){
             throw new NotFoundException("singer id " +id +" not found");
         }
         // Kiểm tra file
@@ -96,21 +96,21 @@ public class FileService {
             throw  new BadRequestException(("File không được vượt quá 2 MB"));
         }
 
-        Path SingerDir = Paths.get("uploads").resolve(id);
-        createFolder(SingerDir.toString());
+        // Path SingerDir = Paths.get("uploads").resolve(id);
+        // createFolder(SingerDir.toString());
 
         //Tạo Path tương ứng với file Upload lên
         String generateFilename = UUID.randomUUID().toString() +fileName;
-        File serverFile = new File(SingerDir.toString()+"/"+ generateFilename);
+        File serverFile = new File(rootDir.toString()+"/"+ generateFilename);
 
         try {
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
             stream.write(file.getBytes());
             stream.close();
 
-            String filePath = "/files/"+id+"/"+generateFilename;
+            String filePath = generateFilename;
 
-            songSingerService.getSingerById(id).setAvatar(filePath);
+            singerOptional.get().setAvatar(filePath);
             return filePath;
         }
         catch (FileNotFoundException e) {
@@ -137,8 +137,8 @@ public class FileService {
 
     public byte[] readFile(String id, String fileName) {
         // Lấy đường dẫn file tương ứng với user_id
-        Path singerPath = rootDir.resolve(id);
-
+        // Path singerPath = rootDir.resolve(id);
+        Path singerPath = rootDir;
         // Kiểm tra đường dẫn file có tồn tại hay không
         if (!Files.exists(singerPath)) {
             throw new RuntimeException("Không thể đọc file : " + fileName);
@@ -182,26 +182,5 @@ public class FileService {
         }
     }
 
-    // public FileReturn getFiles(int id, int page) {
-    //     final int numberImageofPage = 10;
-    //     // Lấy đường dẫn file tương ứng với user_id
-    //     Path userPath = rootDir.resolve(String.valueOf(id));
-
-    //     // Kiểm tra đường dẫn file có tồn tại hay không
-    //     if (!Files.exists(userPath)) {
-    //         throw new RuntimeException("Không thể lấy danh sách file");
-    //     }
-
-    //     //Lấy danh sách file
-    //     List<File> files = Arrays.asList(userPath.toFile().listFiles());
-
-    //     //Công thức tính page
-    //     //List<File> filesReturn = files.subList((page -1)*numberImageofPage,(page*numberImageofPage)-1);
-    //     List<File> filesReturn =files.stream().skip((page -1)*numberImageofPage).limit(numberImageofPage).collect(Collectors.toList());
-    //     int totalPage = (int)Math.ceil((double) files.size()/numberImageofPage);
-
-    //   List<String> filesPath = filesReturn.stream().map(file -> "/files/"+id+"/"+file.getName()).toList();
-    //    return new FileReturn(filesPath,totalPage);
-    // }
 }
 
