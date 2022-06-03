@@ -213,7 +213,8 @@
           </div>
         </div>
         <!-- audio player end -->
-        <h2 class="pl">Danh Sách Phát</h2><br>
+        <h2 class="pl">Thông Tin Bài Hát</h2><br>
+        <h1 id="edit" style="color: Red;font-size: 22px;background-color: aquamarine;border-radius: 15px;"><a href="#" >Chỉnh Sửa Thông Tin</a></h1>
         <!-- <div class="table-border"> -->
           <div class="users-table  table-border" >
             <table class="posts-table" >
@@ -427,7 +428,7 @@
     <script th:src="@{js/feather.min.js}"></script>
     <!-- Custom scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" th:src="@{js/jquery.jplayer.settings.js}"></script>
+    <script th:src="@{api/apiSongById.js}"></script>
 </body>
 
 </html>

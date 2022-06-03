@@ -1,9 +1,12 @@
 const API_Song = "http://localhost:1993/api/song";
 const songAll = document.getElementById("song-table");
+const singer = document.getElementById("singer");
+console.log(singer.innerHTML)
+singer.innerHTML=`<a href="#" class="jp-more-songs">Duy Manh</a>`
+
 let myPlayList = [];
 //lấy API Singer
 const getListSong = async () => {
-
 	let res = await axios.get(API_Song);
 	myPlayList = res.data;
 	console.log(myPlayList);
@@ -24,7 +27,7 @@ const getListSong = async () => {
 		  <td>
 			<label class="users-table__checkbox">
 			  <div class="categories-table-img">
-			  <a href=""><img src="../${s.avatar}" alt=""></a>
+			  <a href="/song|${s.id}"><img src="../${s.avatar}" alt=""></a>
 			  </div>
 			</label>
 		  </td>
@@ -37,8 +40,6 @@ const getListSong = async () => {
 			</div>
 		  </td>
 		  <td><span class="badge-pending">1.000.000 view</span></td>
-  
-	
 		</tr>
 		`
 		singer.splice(0, singer.length);

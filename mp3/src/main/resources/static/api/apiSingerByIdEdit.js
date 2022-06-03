@@ -21,7 +21,7 @@ const ID = x.reverse().join("").replace('?', '');
 console.log(ID)
 
 //Lấy dữ liệu API_SingerByID
-const getUser = async ID => {
+const getSinger = async ID => {
     try {
         let res = await axios.get(`${API_SingerById}/${ID}`)
         renderUser(res.data)
@@ -71,6 +71,6 @@ btnSave.addEventListener("click", async function (event) {
 })
 
 }
-getUser(ID)
+getSinger(ID)
 
 

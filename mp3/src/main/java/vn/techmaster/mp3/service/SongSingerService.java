@@ -1,5 +1,7 @@
 package vn.techmaster.mp3.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -44,11 +46,11 @@ public class SongSingerService {
         Singer singer2 = new Singer("Min", "images/dung_yeu_nua_em_met_roi.jpg");
         Singer singer3 = new Singer("Suni Hạ Linh", "images/khong_sao_ma_em_day_roi.jpg");
 
-        Song song1 = new Song("lambada", "../music/lambada.mp3", "images/lambada.jpg");
-        Song song2 = new Song("hay_ve_day_ben_anh", "../music/hay_ve_day_ben_anh.mp3", "images/hay_ve_day_ben_anh.jpg");
-        Song song3 = new Song("dung_yeu_nua_em_met_roi", "../music/dung_yeu_nua_em_met_roi.mp3",
+        Song song1 = new Song("lambada", "music/lambada.mp3", "images/lambada.jpg");
+        Song song2 = new Song("Hãy về đây bên anh", "music/hay_ve_day_ben_anh.mp3", "images/hay_ve_day_ben_anh.jpg");
+        Song song3 = new Song("Đừng yêu nữa em mệt rồi", "music/dung_yeu_nua_em_met_roi.mp3",
                 "images/dung_yeu_nua_em_met_roi.jpg");
-        Song song4 = new Song("khong_sao_ma_em_day_roi", "../music/khong_sao_ma_em_day_roi.mp3",
+        Song song4 = new Song("Không sao ma em đây rồi", "music/khong_sao_ma_em_day_roi.mp3",
                 "images/khong_sao_ma_em_day_roi.jpg");
 
         SongSinger duymanh1 = new SongSinger(song1, singer1, 100);
@@ -103,7 +105,6 @@ public class SongSingerService {
         return singer;
     }
    // delete singer
-    @Transactional
     public void deleteSinger(String id) {
         singerRepo.deleteById(id);
         }
@@ -117,14 +118,30 @@ public class SongSingerService {
         em.flush();
         return singer;
     }
-    public SingerDto editSinger(String id, SingerRequestUpdate request) {
-        Optional<Singer> singerOptional = singerRepo.findById(id) ;
-        if(singerOptional.isEmpty()){
-            throw new NotFoundException("user id " +id +" not found");
-        }
-        Singer singer = singerOptional.get();
-        singer.setName(request.getName());
+    // public SingerDto editSinger(String id, SingerRequestUpdate request) {
+    //     Optional<Singer> singerOptional = singerRepo.findById(id) ;
+    //     if(singerOptional.isEmpty()){
+    //         throw new NotFoundException("user id " +id +" not found");
+    //     }
+    //     Singer singer = singerOptional.get();
+    //     singer.setName(request.getName());
 
-        return SingerMapper.toSingerDto(singer);
+    //     return SingerMapper.toSingerDto(singer);
+    // }
+
+    // lay danh sach nhac theo ca sy
+    public List<Song> getSongBySinger(String id) {
+        Optional<Singer> singer = singerRepo.findById(id);
+        List<String> ids = new ArrayList<>();
+        for (String id_song : singer.get().getStudents().keySet()) {
+            ids.add(id_song);
+        }
+        List<Song> songs = songRepo.findAll().stream().filter(s->ids.contains(s.getId())).collect(Collectors.toList());
+        return songs;
     }
+
+        // bài hát theo id
+        public Optional<Song> SongById(String id) {
+            return songRepo.findById(id);
+        }
 }

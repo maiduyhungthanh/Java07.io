@@ -18,9 +18,8 @@
   <link rel="stylesheet" th:href="@{css/style.min.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
   <link rel="stylesheet" th:href="@{css/home.css}">
-   <!-- Favicon -->
-   <link rel="shortcut icon" th:href="@{img/svg/logo.svg}" type="image/x-icon">
-
+  <!-- Favicon -->
+  <link rel="shortcut icon" th:href="@{img/svg/logo.svg}" type="image/x-icon">
 
 
 
@@ -123,8 +122,8 @@
                 <span class="sr-only">My profile</span>
                 <span class="nav-user-img">
                   <picture>
-                    <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
-                      src="./img/avatar/avatar-illustrated-02.png" alt="User name">
+                    <source srcset=".././img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
+                      src=".././img/avatar/avatar-illustrated-02.png" alt="User name">
                   </picture>
                 </span>
               </button>
@@ -159,216 +158,161 @@
             source files are available for free.</li>
         </ul>
       </div>
-      <a href="#" class="hs-prev"><img src="images/prev.png" alt=""></a> <a href="#" class="hs-next"><img
-          src="images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
+      <a href="#" class="hs-prev"><img src="../images/prev.png" alt=""></a> <a href="#" class="hs-next"><img
+          src="../images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
     </header>
     <div class="tumbvr">
       <div class="tumbvr-mask"></div>
       <ul>
-        <li><img src="images/01.jpg" alt=""></li>
-        <li><img src="images/02.jpg" alt=""></li>
-        <li><img src="images/03.jpg" alt=""></li>
-        <li><img src="images/04.jpg" alt=""></li>
-        <li><img src="images/05.jpg" alt=""></li>
-        <li><img src="images/06.jpg" alt=""></li>
-        <li><img src="images/07.jpg" alt=""></li>
-        <li><img src="images/08.jpg" alt=""></li>
-        <li><img src="images/09.jpg" alt=""></li>
-        <li><img src="images/10.jpg" alt=""></li>
+        <li><img src="../images/01.jpg" alt=""></li>
+        <li><img src="../images/02.jpg" alt=""></li>
+        <li><img src="../images/03.jpg" alt=""></li>
+        <li><img src="../images/04.jpg" alt=""></li>
+        <li><img src="../images/05.jpg" alt=""></li>
+        <li><img src="../images/06.jpg" alt=""></li>
+        <li><img src="../images/07.jpg" alt=""></li>
+        <li><img src="../images/08.jpg" alt=""></li>
+        <li><img src="../images/09.jpg" alt=""></li>
+        <li><img src="../images/10.jpg" alt=""></li>
       </ul>
     </div>
     <article id="content">
       <div class="col-1">
         <div class="p2">
           <h2>New Album</h2>
-          <img src="images/col-1-img1.png" class="p1" alt=""> <a href="#" class="more">Read More</a>
+          <img src="../images/col-1-img1.png" class="p1" alt=""> <a href="#" class="more">Read More</a>
         </div>
         <div class="p2">
           <h2>New Video</h2>
-          <a href="#"><img class="p1" src="images/col1-video-thumb1.jpg" alt=""></a>
+          <a href="#"><img class="p1" src="../images/col1-video-thumb1.jpg" alt=""></a>
           <div class="alc"><a href="video.html">More Videos</a></div>
         </div>
       </div>
-      <div class="col-2">
-        <!-- audio player begin -->
-        <div id="jplayer"></div>
-        <div class="jp-audio">
-          <h2>New Song</h2>
-          <div class="jp-type-single">
-            <div id="jp_interface_1" class="jp-interface">
-              <ul class="jp-controls">
-                <li><a href="#" class="jp-play"></a></li>
-                <li><a href="#" class="jp-pause"></a></li>
-                <li><a href="#" class="jp-prev">Previous Track</a></li>
-                <li><a href="#" class="jp-next">Next Track</a></li>
-                <li id="singer"><a href="#" class="jp-more-songs" >Listen to More Songs</a></li>
-              </ul>
-              <div class="jp-progress">
-                <div class="jp-seek-bar">
-                  <div class="jp-play-bar"></div>
-                </div>
-              </div>
-              <div class="jp-title"></div>
-            </div>
-          </div>
-        </div>
-        <!-- audio player end -->
-        <h2 class="pl">Danh Sách Phát</h2><br>
-        <!-- <div class="table-border"> -->
-          <div class="users-table  table-border" >
-            <table class="posts-table" >
-              <thead>
-                <tr class="users-table-info">
-                  <th>
-                    <label class="users-table__checkbox ms-20">
-                     Avatar
-                    </label>
-                  </th>
-                  <th>Tên bài hát</th>
-                  <th>Ca sỹ</th>
-                  <th>Lượt nghe</th>
-                </tr>
-              </thead>
-              <tbody id="song-table">
-              </tr>
-              <tr>
-                <td>
-                  <label class="users-table__checkbox">
-                    <div class="categories-table-img">
-                    <a href=""><img src="../images/01.jpg" alt=""></a>
-                    </div>
-                  </label>
-                </td>
-                <td>
-                  Start a blog to reach your creative peak
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Annette Black
+      <!-- <div class="col-2" style="width: 506px;"> -->
+        <div class="col-2">
+
+          <main class="page-center">
+            <article class="sign-up" style="margin-top: -250px;margin-left: 400px;" id="singer-by-id">
+              <h1 class="sign-up__title">Chỉnh Sửa Bài Hát</h1>
+              <p class="sign-up__subtitle">Luôn cập nhập nhanh nhất chính xác nhất</p>
+              <form class="sign-up-form form" action="" method="">
+                <label class="form-label-wrapper">
+                  <p class="form-label">Tên</p>
+                  <input class="form-input" id="nameEl" type="text" placeholder="Enter your name" required>
+                </label>
+                  <label class="form-label">Avatar</label>
+                  <div class="avatar-preview mb-3 rounded">
+                      <img src="../images/11.jpg"  alt="avatar" id="avatar-preview" class="rounded">
                   </div>
-                </td>
-                <td><span class="badge-pending">1.000.000 view</span></td>         
-              </tr>
-                <tr>
-                  <td>
-                    <label class="users-table__checkbox">
-                      <div class="categories-table-img">
-                        <picture>
-                          <source srcset="./img/categories/02.webp" type="image/webp"><img
-                            src="./img/categories/02.jpg" alt="category">
-                        </picture>
-                      </div>
-                    </label>
-                  </td>
-                  <td>
-                    Start a blog to reach your creative peak
-                  </td>
-                  <td>
-                    <div class="pages-table-img">
-                      Annette Black
-                    </div>
-                  </td>
-                  <td><span class="badge-pending">1.000.000 view</span></td>     
-                </tr>
-              </tbody>
-            </table>
+                  <br>
+                  <label for="avatar" class="btn btn-warning">Đổi avatar</label>
+                  <br>
+                  <input type="file" id="avatarEl" class="d-none" style="background-color: transparent; color: aqua;">
+                  <br><br>
+                  <a href="/singer"><button class="form-btn primary-default-btn transparent-btn" id="btn-save">Cập nhập</button></a>
+              </form>
+            </article>
+          </main>
+  
         </div>
-      </div>
-      <div class="col-3">
-        <article class="white-block">
-          <div class="top-cat-title">
-            <h3>Bảng xếp hạng</h3>
-          </div>
-          <ul class="top-cat-list">
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  Lifestyle <span>10.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Dailiy lifestyle articles <span class="purple">+472 comment</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  Tutorials <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Coding tutorials <span class="blue">+472</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  Technology <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Dailiy technology articles <span class="danger">+472</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  UX design <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  UX design tips <span class="success">+472</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  Interaction tips <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Interaction articles <span class="warning">+472</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  App development <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Mobile development articles <span class="warning">+472</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  Nature <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Wildlife animal articles <span class="warning">+472</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="##">
-                <div class="top-cat-list__title">
-                  Geography <span>8.2k</span>
-                </div>
-                <div class="top-cat-list__subtitle">
-                  Geography articles <span class="primary">+472</span>
-                </div>
-              </a>
-            </li>
+        
+       
+        <div class="col-3">
+          
+          <article class="white-block">
+            <div class="top-cat-title">
+              <h3>Bảng xếp hạng</h3>
+            </div>
+            <ul class="top-cat-list">
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    Lifestyle <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Dailiy lifestyle articles <span class="purple">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    Tutorials <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Coding tutorials <span class="blue">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    Technology <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Dailiy technology articles <span class="danger">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    UX design <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    UX design tips <span class="success">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    Interaction tips <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Interaction articles <span class="warning">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    App development <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Mobile development articles <span class="warning">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    Nature <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Wildlife animal articles <span class="warning">+472</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="top-cat-list__title">
+                    Geography <span>8.2k</span>
+                  </div>
+                  <div class="top-cat-list__subtitle">
+                    Geography articles <span class="primary">+472</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </article>
+          <ul class="soc-ico">
+            <li><a href="#"><img src="images/facebook.png" alt=""></a></li>
+            <li><a href="#"><img src="images/twitter.png" alt=""></a></li>
+            <li><a href="#"><img src="images/myspace.png" alt=""></a></li>
+            <li><a href="#"><img src="images/linkedin.png" alt=""></a></li>
           </ul>
-        </article>
-        <ul class="soc-ico">
-          <li><a href="#"><img src="images/facebook.png" alt=""></a></li>
-          <li><a href="#"><img src="images/twitter.png" alt=""></a></li>
-          <li><a href="#"><img src="images/myspace.png" alt=""></a></li>
-          <li><a href="#"><img src="images/linkedin.png" alt=""></a></li>
-        </ul>
-      </div>
+        </div>
     </article>
     <div class="af clear"></div>
   </div>
@@ -417,17 +361,16 @@
       })
     })
   </script>
-
   <!-- END PAGE SOURCE -->
-  <script th:src="@{js/script.js}"></script>
+  <script src="../js/script.js"></script>
 
-    <!-- Chart library -->
-    <script th:src="@{js/chart.min.js}"></script>
-    <!-- Icons library -->
-    <script th:src="@{js/feather.min.js}"></script>
-    <!-- Custom scripts -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" th:src="@{js/jquery.jplayer.settings.js}"></script>
+  <!-- Chart library -->
+  <script src="../js/chart.min.js"></script>
+  <!-- Icons library -->
+  <script src="../js/feather.min.js"></script>
+  <!-- Custom scripts -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script th:src="@{api/apiSongByIdEdit.js}"></script>
 </body>
 
 </html>
