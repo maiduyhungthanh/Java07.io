@@ -1,7 +1,6 @@
 package vn.techmaster.mp3.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -14,16 +13,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import vn.techmaster.mp3.dto.SingerDto;
-import vn.techmaster.mp3.exception.NotFoundException;
-import vn.techmaster.mp3.mapper.SingerMapper;
 import vn.techmaster.mp3.model.Singer;
 import vn.techmaster.mp3.model.Song;
 import vn.techmaster.mp3.model.SongSinger;
 import vn.techmaster.mp3.repository.SingerRepo;
 import vn.techmaster.mp3.repository.SongRepo;
 import vn.techmaster.mp3.repository.SongSingerRepo;
-import vn.techmaster.mp3.request.SingerRequestUpdate;
 
 @Service
 public class SongSingerService {
@@ -88,10 +83,6 @@ public class SongSingerService {
         return singerRepo.findById(id);
     }
 
-    public Singer getSingerById(String id) {
-        return singerRepo.getById(id);
-    }
-
     // tat ca cac bai hat
     public List<Song> getAllSong() {
         return songRepo.findAll();
@@ -104,30 +95,23 @@ public class SongSingerService {
         singerRepo.save(singer);
         return singer;
     }
-   // delete singer
+
+    // delete singer
     public void deleteSinger(String id) {
         singerRepo.deleteById(id);
-        }
-           // edit singer
+    }
+
+    // edit singer
     public Singer updateSinger(Singer singer) {
         singerRepo.save(singer);
-        List<SongSinger> songsinger =songSingerRepo.findAll().stream().filter(s->s.getSinger().getId()==singer.getId()).collect(Collectors.toList());
+        List<SongSinger> songsinger = songSingerRepo.findAll().stream()
+                .filter(s -> s.getSinger().getId() == singer.getId()).collect(Collectors.toList());
         for (SongSinger s : songsinger) {
             em.persist(s);
         }
         em.flush();
         return singer;
     }
-    // public SingerDto editSinger(String id, SingerRequestUpdate request) {
-    //     Optional<Singer> singerOptional = singerRepo.findById(id) ;
-    //     if(singerOptional.isEmpty()){
-    //         throw new NotFoundException("user id " +id +" not found");
-    //     }
-    //     Singer singer = singerOptional.get();
-    //     singer.setName(request.getName());
-
-    //     return SingerMapper.toSingerDto(singer);
-    // }
 
     // lay danh sach nhac theo ca sy
     public List<Song> getSongBySinger(String id) {
@@ -136,12 +120,53 @@ public class SongSingerService {
         for (String id_song : singer.get().getStudents().keySet()) {
             ids.add(id_song);
         }
-        List<Song> songs = songRepo.findAll().stream().filter(s->ids.contains(s.getId())).collect(Collectors.toList());
+        List<Song> songs = songRepo.findAll().stream().filter(s -> ids.contains(s.getId()))
+                .collect(Collectors.toList());
         return songs;
     }
 
-        // bài hát theo id
-        public Optional<Song> SongById(String id) {
-            return songRepo.findById(id);
+    // bài hát theo id
+    public Optional<Song> SongById(String id) {
+        return songRepo.findById(id);
+    }
+
+    // xóa bài hát
+    public void deleteSong(String id) {
+        songRepo.deleteById(id);
+    }
+
+    // sửa bài hát
+    public Song updateSong(Song song) {
+        songRepo.save(song);
+        List<SongSinger> songsinger = songSingerRepo.findAll().stream()
+                .filter(s -> s.getSinger().getId() == song.getId()).collect(Collectors.toList());
+        for (SongSinger s : songsinger) {
+            em.persist(s);
         }
+        em.flush();
+        return song;
+    }
+
+    // thêm bài hát
+    public Song songAdd(Song song) {
+        List<Singer> singers = new ArrayList<>();
+        String id = UUID.randomUUID().toString();
+        song.setId(id);
+        songRepo.save(song);
+        String[] id_singer = song.getLyric().split("/");
+        for (int i = 0; i < id_singer.length; i++) {
+            Optional<Singer> singerOptional = singerRepo.findById(id_singer[i]);
+            if (!singerOptional.isEmpty()) {
+                singers.add(singerOptional.get());
+            }
+        }
+        for (Singer singer : singers) {
+            SongSinger aaa = new SongSinger(song, singer, 100);
+            songSingerRepo.save(aaa);
+        }
+        song.setLyric(null);
+        songRepo.save(song);
+        return song;
+    }
+
 }

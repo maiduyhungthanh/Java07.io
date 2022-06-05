@@ -27,7 +27,7 @@ const getListSong = async () => {
 		  <td>
 			<label class="users-table__checkbox">
 			  <div class="categories-table-img">
-			  <a href="/song|${s.id}"><img src="../${s.avatar}" alt=""></a>
+			  <a href="/song|${s.id}"><img src="${s.avatar}" alt=""></a>
 			  </div>
 			</label>
 		  </td>

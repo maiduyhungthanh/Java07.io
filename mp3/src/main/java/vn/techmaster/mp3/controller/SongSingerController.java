@@ -15,43 +15,51 @@ import vn.techmaster.mp3.service.SongSingerService;
 @RequestMapping()
 public class SongSingerController {
     @Autowired SongSingerService songSingerService;
-
+    // trang chủ
     @GetMapping("/")
     public String index() {
         return "index";
     }
-
+    // đóng góp ý kiến
     @GetMapping("/contacts")
     public String contacts() {
         return "contacts";
     }
-
+    // danh sách ca sỹ
     @GetMapping("/singer")
     public String singer() {
         return "singer";
     }
-
+    // add ca sỹ
     @GetMapping("/addsinger")
     public String addSinger() {
         return "addSinger";
     }
-
+    // detail ca sỹ
     @GetMapping(value = "/singer|{id}")
     public String singerById(@PathVariable String id) {
         return "singerById";
     }
+    // update ca sỹ
     @GetMapping(value = "/singer-edit|{id}")
     public String singerByIdEdit(@PathVariable String id,Model model) {
             Singer singer = songSingerService.SingerById(id).get();
             model.addAttribute("singer", singer);
         return "singerByIdEdit";
     }
+    // detail bài hát
     @GetMapping(value = "/song|{id}")
     public String songById(@PathVariable String id) {
         return "songById";
     }
+    // update bài hát
     @GetMapping(value = "/song-edit|{id}")
     public String songByIdEdit(@PathVariable String id) {
         return "songByIdEdit";
+    }
+    // add bài hát
+    @GetMapping("/addsong")
+    public String addSong(){
+        return "addSong";
     }
 }

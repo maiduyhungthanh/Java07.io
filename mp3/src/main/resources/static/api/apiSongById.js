@@ -1,6 +1,7 @@
 const API_Song = "http://localhost:1993/api/song";
 const songAll = document.getElementById("song-table");
 const edit = document.getElementById("edit");
+const btnDel = document.getElementById("delete")
 
 // lấy id
 var link = location.href;
@@ -24,8 +25,6 @@ const getListSong = async () => {
 	let singerId=[]
 	let html = "";
     edit.innerHTML=`<a href="http://localhost:1993/song-edit|${ID}" >Chỉnh Sửa Thông Tin</a>`
-	// for (let i = 0; i < myPlayList.length; i++) {
-	// 	let s = myPlayList[i];
 		let x = Array.from(myPlayList.singers);
 		for (let j = 0; j < x.length; j++) {
 			singer.push(x[j].name)
@@ -38,7 +37,7 @@ const getListSong = async () => {
 		  <td>
 			<label class="users-table__checkbox">
 			  <div class="categories-table-img">
-			  <a href="/song|${myPlayList.id}"><img src="../${myPlayList.avatar}" alt=""></a>
+			  <a href="/song|${myPlayList.id}"><img src="${myPlayList.avatar}" alt=""></a>
 			  </div>
 			</label>
 		  </td>
@@ -53,38 +52,12 @@ const getListSong = async () => {
 		  <td><span class="badge-pending">1.000.000 view</span></td>
 		</tr>
 		`
-	// 	singer.splice(0, singer.length);
-	// }
 	songAll.innerHTML = html
-	// $(function () {
-	// 	var playItem = 0,
-	// 		title = $('.jp-interface .jp-title'),
-	// 		jPlayer = $("#jplayer"),
-	// 		myPlayList = res.data,
-	// 		jPlay = function (idx) {
-	// 			if (typeof idx == typeof 0)
-	// 				jPlayer.jPlayer("setMedia", myPlayList[idx]).jPlayer('play')
-	// 			if (typeof idx == typeof '')
-	// 				jPlayer.jPlayer("setMedia", myPlayList[playItem = idx == 'next' ? (++playItem < myPlayList.length ? playItem : 0) : (--playItem >= 0 ? playItem : myPlayList.length - 1)]).jPlayer('play')
-	// 			title.text(myPlayList[playItem].name)
-	// 			Cufon.refresh()
-	// 		}
-
-	// 	jPlayer.jPlayer({
-	// 		ready: function () {
-	// 			jPlay(playItem)
-	// 		},
-	// 		ended: function () {
-	// 			jPlay('next')
-	// 		}
-	// 	})
-
-	// 	$(".jp-prev,.jp-next")
-	// 		.click(function () {
-	// 			jPlay($(this).is('.jp-next') ? 'next' : 'prev')
-	// 			return false;
-	// 		})
-
-	// });
 }
+btnDel.addEventListener("click", async function () {
+
+    let res = await axios.delete(`http://localhost:1993/api/song/delete/${ID}`)
+    console.log(res)
+    window.location.href = "/singer"
+})
 getListSong();

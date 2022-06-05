@@ -26,7 +26,6 @@ public class FileService {
 
     //tạo 1 file uploads
     private final Path rootDir = Paths.get("src/main/resources/static/uploads");
-
     public FileService(){
         createFolder(rootDir.toString());
     }
@@ -37,7 +36,7 @@ public class FileService {
         }
     }
 
-    //định dạng file phần ADD
+    //định dạng file phần Add Singer
     public String uploadImages(MultipartFile file){
         // Kiểm tra tên file
         String fileName = file.getOriginalFilename();
@@ -63,8 +62,6 @@ public class FileService {
             stream.close();
 
             String filePath = generateFilename;
-
-            // songSingerService.getSingerById(id).setAvatar(filePath);
             return filePath;
         }
         catch (FileNotFoundException e) {
@@ -75,7 +72,7 @@ public class FileService {
 
     }
 
-    //Up Ảnh phẩn Edit
+        //định dạng file phần Update Singer
     public String uploadfile(String id, MultipartFile file) {
         Optional<Singer> singerOptional = songSingerService.SingerById(id);
         if(singerOptional.isEmpty()){
@@ -95,9 +92,6 @@ public class FileService {
         if((double)file.getSize() / 1_000_000L >2){
             throw  new BadRequestException(("File không được vượt quá 2 MB"));
         }
-
-        // Path SingerDir = Paths.get("uploads").resolve(id);
-        // createFolder(SingerDir.toString());
 
         //Tạo Path tương ứng với file Upload lên
         String generateFilename = UUID.randomUUID().toString() +fileName;
@@ -121,7 +115,7 @@ public class FileService {
 
 
     }
-
+    // lấy định dạng file sau dấu chấm
     private String getFileExtension(String  fileName) {
         int lastIndexOf = fileName.lastIndexOf(".");
         if (lastIndexOf == -1) {
@@ -129,12 +123,13 @@ public class FileService {
         }
         return fileName.substring(lastIndexOf+1);
     }
-
+    // check đúng định dạng ảnh không
     private static boolean checkFileExtension(String fileExtension ){
         List<String> fileExtensions = Arrays.asList("png","jpg","jpeg");
         return fileExtensions.contains(fileExtension);
     }
 
+    // tạo link file ảnh update Singer
     public byte[] readFile(String id, String fileName) {
         // Lấy đường dẫn file tương ứng với user_id
         // Path singerPath = rootDir.resolve(id);
@@ -158,6 +153,8 @@ public class FileService {
             throw new RuntimeException("Không thể đọc file : " + fileName);
         }
     }
+    
+    // tạo link file ảnh add singer
     public byte[] readImage (String fileName) {
         // Lấy đường dẫn file tương ứng với user_id
         Path singerPath = rootDir;
