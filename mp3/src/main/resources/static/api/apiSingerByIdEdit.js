@@ -24,7 +24,7 @@ console.log(ID)
 const getSinger = async ID => {
     try {
         let res = await axios.get(`${API_SingerById}/${ID}`)
-        renderUser(res.data)
+        renderSinger(res.data)
     } catch (error) {
         console.log(error)
     }
@@ -45,7 +45,7 @@ avatarEl.addEventListener("change", async function (event) {
     }
     console.log(file)
 })
-const renderUser = s => {
+const renderSinger = s => {
     nameEl.placeholder = s.name,
         nameEl.value = s.name,
         avatarPreview.src = `${s.avatar}`

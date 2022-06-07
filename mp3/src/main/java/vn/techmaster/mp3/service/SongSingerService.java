@@ -138,12 +138,12 @@ public class SongSingerService {
     // sửa bài hát
     public Song updateSong(Song song) {
         songRepo.save(song);
-        List<SongSinger> songsinger = songSingerRepo.findAll().stream()
-                .filter(s -> s.getSinger().getId() == song.getId()).collect(Collectors.toList());
-        for (SongSinger s : songsinger) {
-            em.persist(s);
-        }
-        em.flush();
+        // List<SongSinger> songsinger = songSingerRepo.findAll().stream()
+        //         .filter(s -> s.getSinger().getId() == song.getId()).collect(Collectors.toList());
+        // for (SongSinger s : songsinger) {
+        //     em.persist(s);
+        // }
+        // em.flush();
         return song;
     }
 
@@ -169,4 +169,12 @@ public class SongSingerService {
         return song;
     }
 
+    //tim kiem bai hat theo ten ca sy hoac bai hat
+    public List<Song> songByKeyWord (String keywork){
+        List<Song> songs = songRepo.findAll().stream().filter(s->
+        s.getName().toLowerCase().contains(keywork.toLowerCase())||
+        s.getSingers().get(0).getName().toLowerCase().contains(keywork.toLowerCase()))
+        .collect(Collectors.toList());
+        return songs;
+    } 
 }

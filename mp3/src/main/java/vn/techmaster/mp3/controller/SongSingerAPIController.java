@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,18 +22,17 @@ import vn.techmaster.mp3.model.Singer;
 import vn.techmaster.mp3.model.Song;
 import vn.techmaster.mp3.service.FileMp3Service;
 import vn.techmaster.mp3.service.FileService;
+import vn.techmaster.mp3.service.FileSongService;
 import vn.techmaster.mp3.service.SongSingerService;
 
 @RestController
 @RequestMapping("/api")
 public class SongSingerAPIController {
 
-    @Autowired
-    SongSingerService songSingerService;
-    @Autowired
-    private FileService fileService;
-    @Autowired
-    private FileMp3Service fileMp3Service;
+    @Autowired SongSingerService songSingerService;
+    @Autowired private FileService fileService;
+    @Autowired private FileMp3Service fileMp3Service;
+    @Autowired private FileSongService fileSongService;
 
     // all ca sỹ
     @GetMapping("/singer")
@@ -57,7 +57,7 @@ public class SongSingerAPIController {
 
     // update ca sỹ
     @PostMapping("/singer-save")
-    public ResponseEntity<?> updateUser(@RequestBody Singer request) {
+    public ResponseEntity<?> updateSinger(@RequestBody Singer request) {
         Singer singer = songSingerService.updateSinger(request);
         return ResponseEntity.ok(singer);
     }
@@ -143,14 +143,14 @@ public class SongSingerAPIController {
     // lưu ảnh add bài hát
     @PostMapping("/song/image")
     public ResponseEntity<?> UploadImageSong(@ModelAttribute("file") MultipartFile file) {
-        String path = fileService.uploadImages(file);
+        String path = fileSongService.uploadImages(file);
         return ResponseEntity.ok(path);
     }
 
     // link ảnh add bài hát
     @GetMapping("/song/image/{fileName}")
     public ResponseEntity<?> readImageSong(@PathVariable String fileName) {
-        byte[] bytes = fileService.readImage(fileName);
+        byte[] bytes = fileSongService.readImage(fileName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
     }
 
@@ -160,9 +160,32 @@ public class SongSingerAPIController {
         Song song = songSingerService.songAdd(request);
         return ResponseEntity.ok(song);
     }
-    // @PostMapping("/song2")
-    // public ResponseEntity<?> SongAdd(@RequestBody List<Singer> singers) {
-    //     Song song = songSingerService.addSong(singers);
-    //     return ResponseEntity.ok(song);
-    // }
+
+    
+    // lưu ảnh update của bai hat
+    @PostMapping("/song/files/{id}")
+    public ResponseEntity<?> UploadfileSong(@PathVariable String id, @ModelAttribute("file") MultipartFile file) {
+        String path = fileSongService.uploadfile(id, file);
+        return ResponseEntity.ok(path);
+    }
+
+    // link ảnh update ca sỹ
+    @GetMapping("/song/files/{id}/{fileName}")
+    public ResponseEntity<?> readFileSong(@PathVariable String id, @PathVariable String fileName) {
+        byte[] bytes = fileSongService.readFile(id, fileName);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+    }
+    // sửa Song
+    @PostMapping("/song-save")
+    public ResponseEntity<?> updateSong(@RequestBody Song request) {
+        Song song = songSingerService.updateSong(request);
+        return ResponseEntity.ok(song);
+    }
+
+    // tim kiem theo Keywork
+    @GetMapping("/songs")
+    public ResponseEntity<?> listSongKeyWork(@RequestParam String keywork) {
+        List<Song> listSong = songSingerService.songByKeyWord(keywork);
+        return ResponseEntity.ok(listSong);
+    }
 }
