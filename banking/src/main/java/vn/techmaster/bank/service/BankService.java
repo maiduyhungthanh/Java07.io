@@ -174,6 +174,7 @@ public class BankService {
       account.setBalance(account.getBalance() - withDrawSaveRequest.amount());
       // Nếu rút tiền thì TK Tiết Kiệm sẽ chuyển về TK Thường
       account.setMonths(Period.MONTH_of_0);
+      account.setInterest_rate(0.001);
       Deposit deposit = new Deposit(user, account, withDrawSaveRequest.amount());
       try {
         accountSaveRepo.save(account);
