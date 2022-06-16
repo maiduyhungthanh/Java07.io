@@ -19,6 +19,8 @@ import vn.techmaster.mp3.model.SongSinger;
 import vn.techmaster.mp3.repository.SingerRepo;
 import vn.techmaster.mp3.repository.SongRepo;
 import vn.techmaster.mp3.repository.SongSingerRepo;
+import vn.techmaster.mp3.request.SingerRequest;
+import vn.techmaster.mp3.request.SongRequest;
 
 @Service
 public class SongSingerService {
@@ -89,11 +91,12 @@ public class SongSingerService {
     }
 
     // add singer
-    public Singer singerAdd(Singer singer) {
+    public Singer singerAdd(SingerRequest singer) {
         String id = UUID.randomUUID().toString();
         singer.setId(id);
-        singerRepo.save(singer);
-        return singer;
+        Singer singerNew = new Singer(singer.getId(), singer.getName(), singer.getAvatar(), singer.getSongSingers());
+        singerRepo.save(singerNew);
+        return singerNew;
     }
 
     // delete singer
@@ -102,7 +105,8 @@ public class SongSingerService {
     }
 
     // edit singer
-    public Singer updateSinger(Singer singer) {
+    public Singer updateSinger(SingerRequest singerUpdate) {
+        Singer singer = new Singer(singerUpdate.getId(), singerUpdate.getName(), singerUpdate.getAvatar(), singerUpdate.getSongSingers());
         singerRepo.save(singer);
         List<SongSinger> songsinger = songSingerRepo.findAll().stream()
                 .filter(s -> s.getSinger().getId() == singer.getId()).collect(Collectors.toList());
@@ -136,7 +140,8 @@ public class SongSingerService {
     }
 
     // sửa bài hát
-    public Song updateSong(Song song) {
+    public Song updateSong(SongRequest songUpdate) {
+        Song song = new Song(songUpdate.getId(), songUpdate.getName(), songUpdate.getMp3(),songUpdate.getAvatar(),songUpdate.getLyric(),songUpdate.getSongSingers());
         songRepo.save(song);
         // List<SongSinger> songsinger = songSingerRepo.findAll().stream()
         //         .filter(s -> s.getSinger().getId() == song.getId()).collect(Collectors.toList());
@@ -148,10 +153,11 @@ public class SongSingerService {
     }
 
     // thêm bài hát
-    public Song songAdd(Song song) {
-        List<Singer> singers = new ArrayList<>();
+    public Song songAdd(SongRequest songNew) {
         String id = UUID.randomUUID().toString();
-        song.setId(id);
+        songNew.setId(id);
+        Song song = new Song(songNew.getId(), songNew.getName(), songNew.getMp3(), songNew.getAvatar(), songNew.getLyric(), songNew.getSongSingers());
+        List<Singer> singers = new ArrayList<>();    
         songRepo.save(song);
         String[] id_singer = song.getLyric().split("/");
         for (int i = 0; i < id_singer.length; i++) {

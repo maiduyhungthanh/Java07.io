@@ -29,22 +29,22 @@ const getSong = async ID => {
         console.log(error)
     }
 }
-    // thay đổi ảnh Song
-    const uploadFileAPI = file => {
-        const formData = new FormData()
-        formData.append("file", file)
-        return axios.post(`http://localhost:1993/api/song/files/${ID}`, formData)
+// thay đổi ảnh Song
+const uploadFileAPI = file => {
+    const formData = new FormData()
+    formData.append("file", file)
+    return axios.post(`http://localhost:1993/api/song/files/${ID}`, formData)
+}
+avatarEl.addEventListener("change", async function (event) {
+    let file = event.target.files[0]
+    try {
+        let res = await uploadFileAPI(file)
+        avatarPreview.src = `http://localhost:1993/api/song/files/${ID}/${res.data}`;
+        console.log(`http://localhost:1993/api/song/files/${ID}/${res.data}`)
+    } catch (error) {
     }
-    avatarEl.addEventListener("change", async function (event) {
-        let file = event.target.files[0]
-        try {
-            let res = await uploadFileAPI(file)
-            avatarPreview.src = `http://localhost:1993/api/song/files/${ID}/${res.data}`;
-            console.log(`http://localhost:1993/api/song/files/${ID}/${res.data}`)
-        } catch (error) {
-        }
-        console.log(file)
-    })
+    console.log(file)
+})
 
 // lam select Singer
 const getSinger = async () => {
@@ -71,7 +71,7 @@ const renderSinger = arr => {
 
 let count = 0;
 const renderSong = s => {
-    nameEl.value = s.name,
+        nameEl.value = s.name,
         avatarPreview.src = `${s.avatar}`,
 
         s.singers.forEach(s => {
@@ -84,7 +84,8 @@ const renderSong = s => {
             let res = await axios.post("http://localhost:1993/api/song-save", {
                 id: ID,
                 name: nameEl.value,
-                avatar: avatarPreview.src
+                avatar: avatarPreview.src,
+                mp3:s.mp3
             })
             console.log(res)
             if (res.data) {
