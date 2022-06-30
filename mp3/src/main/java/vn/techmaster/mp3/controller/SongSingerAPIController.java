@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import io.swagger.v3.oas.annotations.Operation;
+import vn.techmaster.mp3.model.Category;
 import vn.techmaster.mp3.model.Singer;
 import vn.techmaster.mp3.model.Song;
+import vn.techmaster.mp3.request.CategoryRequest;
 import vn.techmaster.mp3.request.SingerRequest;
 import vn.techmaster.mp3.request.SongRequest;
 import vn.techmaster.mp3.service.FileMp3Service;
@@ -32,14 +34,18 @@ import vn.techmaster.mp3.service.SongSingerService;
 @RequestMapping("/api")
 public class SongSingerAPIController {
 
-    @Autowired SongSingerService songSingerService;
-    @Autowired private FileService fileService;
-    @Autowired private FileMp3Service fileMp3Service;
-    @Autowired private FileSongService fileSongService;
+    @Autowired
+    SongSingerService songSingerService;
+    @Autowired
+    private FileService fileService;
+    @Autowired
+    private FileMp3Service fileMp3Service;
+    @Autowired
+    private FileSongService fileSongService;
 
     // all ca sỹ
     @Operation(summary = "tất cả ca sỹ")
-    @GetMapping("/singer")
+    @GetMapping(value = "/singer")
     public ResponseEntity<?> listSinger() {
         Collection<Singer> listSinger = songSingerService.getAllSinger();
         return ResponseEntity.ok(listSinger);
@@ -182,7 +188,6 @@ public class SongSingerAPIController {
         return ResponseEntity.ok(song);
     }
 
-    
     // lưu ảnh update của bai hat
     @Operation(summary = "lưu ảnh update của bài hát")
     @PostMapping("/song/files/{id}")
@@ -198,6 +203,7 @@ public class SongSingerAPIController {
         byte[] bytes = fileSongService.readFile(id, fileName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
     }
+
     // sửa Song
     @Operation(summary = "sửa Song")
     @PostMapping("/song-save")
@@ -213,4 +219,42 @@ public class SongSingerAPIController {
         List<Song> listSong = songSingerService.songByKeyWord(keywork);
         return ResponseEntity.ok(listSong);
     }
+
+    //List the loai
+    @Operation(summary = "danh sách Category")
+    @GetMapping("/category")
+    public ResponseEntity<?> listAlbum() {
+        List<Category> listCategory = songSingerService.getCategoryAll();
+        return ResponseEntity.ok(listCategory);
+    }
+    //Category chi tiet
+    @Operation(summary = "Category detail")
+    @GetMapping("/category/{id}")
+    public ResponseEntity<?> AlbumById(@PathVariable String id) {
+        Category category = songSingerService.getCategoryById(id);
+        return ResponseEntity.ok(category);
+    }
+    //List Song theo thế loại
+    @Operation(summary = "danh sách bài hát theo thể loại")
+    @GetMapping("/category/song/{id}")
+    public ResponseEntity<?> listSongbyCategory(@PathVariable String id) {
+        List<Song> songs = songSingerService.getSongByCategory(id);
+        return ResponseEntity.ok(songs);
+    }
+    //Add Category
+    @Operation(summary = "add thể loại")
+    @PostMapping("/category")
+    public ResponseEntity<?> addCategory(@RequestBody CategoryRequest request) {
+        Category category = songSingerService.categoryAdd(request);
+        return ResponseEntity.ok(category);
+    }
+    //Delete Category
+    @Operation(summary = "xóa category")
+    @DeleteMapping(value = "/category/delete/{id}")
+    public ResponseEntity<?> deleteCategoryByID(@PathVariable String id) {
+        songSingerService.deleteCategory(id);
+        return ResponseEntity.ok(songSingerService.getCategoryAll());
+    }
+    //Edit Category
+    
 }

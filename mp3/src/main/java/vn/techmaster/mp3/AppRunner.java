@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import vn.techmaster.mp3.request.SongRequest;
 import vn.techmaster.mp3.service.SongSingerService;
 
 
 @Component
 public class AppRunner implements CommandLineRunner {
   @Autowired private SongSingerService songSingerService;
-
 
   @Override
   public void run(String... args) throws Exception {

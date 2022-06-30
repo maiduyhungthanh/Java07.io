@@ -1,8 +1,5 @@
 const API_Song = "http://localhost:1993/api/song";
 const songAll = document.getElementById("song-table");
-const singer = document.getElementById("singer");
-console.log(singer.innerHTML)
-singer.innerHTML=`<a href="#" class="jp-more-songs">Duy Manh</a>`
 
 let myPlayList = [];
 //lấy API Singer

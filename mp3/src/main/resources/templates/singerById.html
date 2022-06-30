@@ -205,8 +205,37 @@
           <div class="list_singer" style="width: 506px;margin-left: 65px;">
             <div  class="singerEl "> <img id="imgEl" src="../images/gallery7.jpg" alt="" width="500px" height="300px"><br> </div>
           </div>
-          <p style="color: blue; margin-right: -400px;font-size: 20px;" id="list-song">Danh sách bài hát của Lệ Rơi</p>
+                  <!-- start mp3 -->
+        <h2 class="pl" style="color: red;width: 550px;margin-bottom: -70px;">Máy Phát Nhạc</h2>
+        <div class="music-container" id="music-container" style="margin-bottom: 30px;">
+          <div class="music-info">
+            <h4 id="title" style="color: red;font-size: 20px;"></h4>
+            <div class="progress-container" id="progress-container">
+              <div class="progress" id="progress"></div>
+            </div>
+          </div>
 
+          <audio src="music/mot_phut.mp3" id="audio"></audio>
+
+          <div class="img-container">
+            <img src="images/lambada.jpg" id="cover" style=" width: 100px;height: 100px;" />
+          </div>
+          <div class="navigation" style="margin-top: 40px;margin-left: 70px;" >
+            <button id="prev" class="action-btn">
+              <i class="fas fa-backward"></i>
+            </button>
+            <button id="play" class="action-btn action-btn-big">
+              <i class="fas fa-play"></i>
+            </button>
+            <button id="next" class="action-btn">
+              <i class="fas fa-forward"></i>
+            </button>
+          </div>
+        </div>
+      
+        <!-- end mp3 -->
+
+          <p style="color: blue; margin-right: -400px;font-size: 20px;" id="list-song">Danh sách bài hát của Lệ Rơi</p>
         </div>
         <div class="users-table  table-border" >
           <table class="posts-table" >

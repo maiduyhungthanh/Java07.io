@@ -16,7 +16,7 @@ const getListSinger = async () => {
         for (let i = 0; i < list_singer.length; i++) {
             let s = list_singer[i];
             html += `
-            <div class="singerEl" style="margin:20px;"> <a href="/singer|${s.id}" ><img src="${s.avatar}" alt="" style="width: 120px; height: 120px;border-radius: 50%;"><br>
+            <div class="singerEl" style="margin:20px;"> <a href="/singer|${s.id}" style="color:blueviolet;"><img src="${s.avatar}" alt="" style="width: 120px; height: 120px;border-radius: 50%;"><br>
             ${s.name}</a> </div>
             `
         }

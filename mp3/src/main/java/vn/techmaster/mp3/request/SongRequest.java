@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vn.techmaster.mp3.model.SongCategory;
 import vn.techmaster.mp3.model.SongSinger;
 
 @Data
@@ -20,4 +21,6 @@ public class SongRequest{
     private String avatar;
     private String lyric;
     private List<SongSinger> songSingers = new ArrayList<>();
+    private List<SongCategory> songCategorys = new ArrayList<>();
+
  }

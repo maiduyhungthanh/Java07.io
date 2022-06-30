@@ -1,4 +1,5 @@
 const singerEl = document.querySelectorAll(".singerEl")
+const albumEl = document.querySelectorAll(".albumEl")
 const avatarPreview = document.getElementById("avatar-preview")
 const avatarEl = document.getElementById("avatarEl")
 const mp3El = document.getElementById("mp3El")
@@ -9,8 +10,9 @@ const singer2 = document.getElementById("singer2")
 const singer3 = document.getElementById("singer3")
 const link_mp3 = document.getElementById("linkmp3")
 const id_singer = document.getElementById("id_singer")
+const id_album = document.getElementById("id_album")
 var listSinger = []
-
+var listAlbum = []
 const getSinger = async () => {
     try {
         let res = await axios.get("http://localhost:1993/api/singer")
@@ -20,7 +22,16 @@ const getSinger = async () => {
     } catch (error) {
         console.log(error)
     }
-}// chuyển từ mp3 ảnh sang link
+}
+const getAlbum = async () => {
+    try {
+        let res = await axios.get("http://localhost:1993/api/category")
+        renderAlbum(res.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+// chuyển từ mp3 ảnh sang link
 const mp3API = file => {
     const formData = new FormData();
     formData.append("file", file);
@@ -28,17 +39,25 @@ const mp3API = file => {
 }
 // thêm singer nếu cập nhập mp3
 mp3El.addEventListener("change", async function (event) {
-    let r= await axios.get("http://localhost:1993/api/singer")
+    let r = await axios.get("http://localhost:1993/api/singer")
     console.log(r.data)
     for (let i = 0; i < r.data.length; i++) {
-        if(singerEl[0].value == r.data[i].id||
-            singerEl[1].value == r.data[i].id||
-            singerEl[2].value == r.data[i].id){
+        if (singerEl[0].value == r.data[i].id ||
+            singerEl[1].value == r.data[i].id ||
+            singerEl[2].value == r.data[i].id) {
             listSinger.push(r.data[i].id)
         }
     }
     console.log(listSinger)
-    id_singer.innerHTML+= listSinger.join("/")
+    let res = await axios.get("http://localhost:1993/api/category")
+    for (let i = 0; i < res.data.length; i++) {
+        if (albumEl[0].value == res.data[i].id ||
+            albumEl[1].value == res.data[i].id) {
+            listAlbum.push(res.data[i].id)
+        }
+    }
+    id_singer.innerHTML += listSinger.join("/")
+    id_album.innerHTML += listAlbum.join("/")
     let file = event.target.files[0]
     try {
         let res = await mp3API(file)
@@ -64,7 +83,6 @@ avatarEl.addEventListener("change", async function (event) {
         console.log(res)
         avatarPreview.src = `http://localhost:1993/api/song/image/${res.data}`
         console.log(avatarPreview.src)
-
     } catch (error) {
         console.log(error)
     }
@@ -81,18 +99,27 @@ const renderSinger = arr => {
         s.innerHTML = html;
     }
 }
-
+const renderAlbum = arr => {
+    let html = `<option value="123"  selected="selected">Không</option>`
+    for (let i = 0; i < arr.length; i++) {
+        const d = arr[i]
+        html += `<option value="${d.id}">${d.name}</option>`
+    }
+    for (let j = 0; j < albumEl.length; j++) {
+        const s = albumEl[j]
+        s.innerHTML = html;
+    }
+}
 //Thêm Singer nếu không Update ảnh
 btnSave.addEventListener("click", async function () {
 
     try {
         let res = await axios.post(`http://localhost:1993/api/song`,
             {
-                    name: nameEl.value,
-                    avatar: avatarPreview.src,
-                    mp3: link_mp3.innerHTML,
-                    lyric:id_singer.innerHTML
-                
+                name: nameEl.value,
+                avatar: avatarPreview.src,
+                mp3: link_mp3.innerHTML,
+                lyric: id_singer.innerHTML+"/"+id_album.innerHTML
             })
         if (res.data) {
             window.location.href = "/"
@@ -104,6 +131,7 @@ btnSave.addEventListener("click", async function () {
 })
 
 const init = async () => {
-    await getSinger()
+    await getSinger(),
+    await getAlbum()
 }
 init()

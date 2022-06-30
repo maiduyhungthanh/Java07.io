@@ -9,9 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Table (name = "song")
@@ -44,14 +42,6 @@ public class Song implements Serializable{
     
     @JsonGetter(value = "singers")
     @Transient
-    // public Map<String, Integer> getStudents() {
-    //   Map<String, Integer> singerView = new HashMap<>();
-    //     songSingers.stream().forEach( songSinger -> {
-    //     singerView.put(songSinger.getSinger().getName(), songSinger.getView());
-    //           }
-    //   );
-    //   return singerView;
-    //         }
     public List<Singer> getSingers(){
       List<Singer> listSingers = new ArrayList<>();
       songSingers.stream().forEach(songSinger->{
@@ -59,6 +49,23 @@ public class Song implements Serializable{
       });
       return listSingers;
     }
+
+        // mot bai hat co nhieu the loai
+        @JsonIgnore
+        @OneToMany(mappedBy = "song")
+        private List<SongCategory> songCategories = new ArrayList<>();
+      
+        
+        @JsonGetter(value = "categorys")
+        @Transient
+        public List<Category> getCategorys(){
+          List<Category> listCategorys = new ArrayList<>();
+          songCategories.stream().forEach(songCategory->{
+            listCategorys.add(songCategory.getCategory());
+          });
+          return listCategorys;
+        }
+
 
 
 }
