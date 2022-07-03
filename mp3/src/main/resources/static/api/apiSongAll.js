@@ -187,7 +187,7 @@ const getListAlbum = async () => {
             let s = list_album[i];
             html += `
             <div class="p2">
-            <h2 style="color: greenyellow;">${s.name}</h2>
+            <h3 style="color: greenyellow;width: 110px;max-width: none;">${s.name}</h3>
             <img src="${s.avatar}" style="height: 110px;width: 110px;max-width: none;"> <a href="/album|${s.id}"
               class="more">Listen Now</a>
           </div>
