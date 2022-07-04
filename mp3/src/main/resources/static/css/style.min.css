@@ -1337,8 +1337,6 @@ button.disabled:focus {
     -webkit-box-shadow: 0 -2px 24px rgba(160, 163, 189, .25);
     box-shadow: 0 -2px 24px rgba(160, 163, 189, .25);
     border-radius: 4px;
-    opacity: 0;
-    visibility: hidden;
     -webkit-transition: .3s all;
     -o-transition: .3s all;
     transition: .3s all;
@@ -1365,8 +1363,8 @@ button.disabled:focus {
     font-weight: 500;
     font-size: 14px;
     line-height: 2.43;
-    color: #767676;
-    border-bottom: 1px solid #eee;
+    color: red;
+    border:none;
     text-align: left
 }
 
@@ -2103,12 +2101,13 @@ label {
     top: 40px;
     right: 0;
     width: 100px
+ 
 }
 
-.lang-menu.active {
-    opacity: 1;
+/* .lang-menu.active {
+   opacity: 1;
     visibility: visible
-}
+} */
 
 .sort-bar {
     -webkit-box-pack: justify;

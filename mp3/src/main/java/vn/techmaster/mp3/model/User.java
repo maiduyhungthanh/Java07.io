@@ -1,13 +1,15 @@
 package vn.techmaster.mp3.model;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -20,8 +22,7 @@ import javax.persistence.JoinColumn;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -32,6 +33,12 @@ public class User {
 	private String email;
 	
 	private String password;
+
+	private String avatar;
+
+	@Column
+    @ElementCollection(targetClass=Integer.class)
+	private List<Song> songs;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
@@ -49,16 +56,19 @@ public class User {
 	
 	public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
 		super();
+		this.id = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.avatar = "/img/avatar/avatar-illustrated-03.png";
+		this.songs = null;
 	}
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -91,5 +101,16 @@ public class User {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
-
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public List<Song> getSongs() {
+		return songs;
+	}
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
 }

@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +29,15 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Transactional
+	public void generateUser() {
+		// User admin = new User("", "Admin", "admin@gmail.com", passwordEncoder.encode("123"),  Arrays.asList(new Role("ROLE_ADMIN"),new Role("ROLE_USER"),new Role("ROLE_OPERATOR")));
+		// User operator = new User("", "Operator", "operator@gmail.com", passwordEncoder.encode("123"),  Arrays.asList(new Role("ROLE_USER"),new Role("ROLE_OPERATOR")));
+		// User user = new User("", "User", "user@gmail.com", passwordEncoder.encode("123"), Arrays.asList(new Role("ROLE_USER")));
+		// userRepository.save(admin);
+		// userRepository.save(operator);
+		// userRepository.save(user);
+	}
 	public UserServiceImpl(UserRepository userRepository) {
 		super();
 		this.userRepository = userRepository;
@@ -36,8 +47,7 @@ public class UserServiceImpl implements UserService{
 	public User save(UserRegistrationRequest registrationDto) {
 		User user = new User(registrationDto.getFirstName(), 
 				registrationDto.getLastName(), registrationDto.getEmail(),
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
-		
+				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));	
 		return userRepository.save(user);
 	}
 

@@ -22,20 +22,16 @@ public class MainController {
 		return "login";
 	}
 	
-	@GetMapping("/user")
-	public String showHomePage(Principal principal, Model model) {
-	  String loginName = (principal != null) ? principal.getName() : "";
+	// @GetMapping("/user")
+	// public String showHomePage(Principal principal, Model model) {
+	//   String loginName = (principal != null) ? principal.getName() : "";
   
-	  var authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+	//   var authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
   
-	  for (var authority:authorities) {
-		System.out.println(authority.getAuthority());
-	  }
-	  
-	  model.addAttribute("login_name", loginName);
-	  model.addAttribute("authorities", authorities);
-	  return "aaaa";
-	}
+	//   model.addAttribute("login_name", loginName);
+	//   model.addAttribute("authorities", authorities);
+	//   return "aaaa";
+	// }
 	@Operation(summary = "tất cả ca sỹ")
     @GetMapping(value = "/tendangnhap")
     public ResponseEntity<?> listSinger(Principal principal) {

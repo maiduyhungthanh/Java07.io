@@ -1,8 +1,8 @@
 package vn.techmaster.mp3.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,28 +11,22 @@ import javax.persistence.Table;
 public class Role {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-
-		public static final String ADMIN = "ADMIN";
-		public static final String USER = "USER";
-		public static final String OPERATOR = "OPERATOR";
-	  
-	
+	private String id;
+	private String name;	
 	public Role() {
 		
 	}
 	
 	public Role(String name) {
 		super();
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {

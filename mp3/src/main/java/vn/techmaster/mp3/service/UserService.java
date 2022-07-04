@@ -9,4 +9,5 @@ import vn.techmaster.mp3.request.UserRegistrationRequest;
 
 public interface UserService extends UserDetailsService{
 	User save(UserRegistrationRequest UserRegistrationRequest);
+
 }

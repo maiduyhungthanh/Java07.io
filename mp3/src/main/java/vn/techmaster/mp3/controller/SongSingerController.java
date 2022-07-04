@@ -17,7 +17,7 @@ public class SongSingerController {
     SongSingerService songSingerService;
 
     // trang chủ
-    @GetMapping("/")
+    @GetMapping(value = { "/", "/none"})
     public String index() {
         return "index";
     }
