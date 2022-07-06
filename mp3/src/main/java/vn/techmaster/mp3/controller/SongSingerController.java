@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import vn.techmaster.mp3.model.Singer;
+import vn.techmaster.mp3.service.EmailService;
 import vn.techmaster.mp3.service.SongSingerService;
 
 @Controller
@@ -15,7 +16,8 @@ import vn.techmaster.mp3.service.SongSingerService;
 public class SongSingerController {
     @Autowired
     SongSingerService songSingerService;
-
+    @Autowired
+    EmailService emailService;
     // trang chủ
     @GetMapping(value = { "/", "/none"})
     public String index() {

@@ -182,15 +182,15 @@ const getListAlbum = async () => {
   let res = await axios.get("http://localhost:1993/api/category");
   list_album = res.data;
   console.log(list_album);
-  let html = "";
+  let html = `<h2 style="color:Red;font-size:20px;max-width: none;width: 110px;">Top Album</h2><br><br>`
   for (let i = 0; i < list_album.length; i++) {
     let s = list_album[i];
     html += `
             <div class="p2">
             <h3 style="color: greenyellow;width: 110px;max-width: none;">${s.name}</h3>
-            <img src="${s.avatar}" style="height: 110px;width: 110px;max-width: none;"> <a href="/album|${s.id}"
-              class="more">Listen Now</a>
-          </div>
+            <a href="/album|${s.id}">
+            <img src="${s.avatar}" style="height: 110px;width: 110px;max-width: none;"></a>
+            </div>
             `
   }
   albumAll.innerHTML = html;

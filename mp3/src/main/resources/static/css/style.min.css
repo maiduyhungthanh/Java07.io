@@ -2101,13 +2101,13 @@ label {
     top: 40px;
     right: 0;
     width: 100px
- 
 }
 
-/* .lang-menu.active {
-   opacity: 1;
-    visibility: visible
-} */
+.canhan-menu {
+    top: 40px;
+    right: 0;
+    width: 150px
+}
 
 .sort-bar {
     -webkit-box-pack: justify;

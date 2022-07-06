@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import vn.techmaster.mp3.model.Role;
+import vn.techmaster.mp3.model.State;
 import vn.techmaster.mp3.model.User;
 import vn.techmaster.mp3.repository.UserRepository;
 import vn.techmaster.mp3.request.UserRegistrationRequest;
@@ -28,12 +29,16 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired EmailService emailService;
 	
 	@Transactional
 	public void generateUser() {
 		// User admin = new User("", "Admin", "admin@gmail.com", passwordEncoder.encode("123"),  Arrays.asList(new Role("ROLE_ADMIN"),new Role("ROLE_USER"),new Role("ROLE_OPERATOR")));
 		// User operator = new User("", "Operator", "operator@gmail.com", passwordEncoder.encode("123"),  Arrays.asList(new Role("ROLE_USER"),new Role("ROLE_OPERATOR")));
 		// User user = new User("", "User", "user@gmail.com", passwordEncoder.encode("123"), Arrays.asList(new Role("ROLE_USER")));
+		// admin.setState(State.ACTIVE);
+		// operator.setState(State.ACTIVE);
+		// user.setState(State.ACTIVE);
 		// userRepository.save(admin);
 		// userRepository.save(operator);
 		// userRepository.save(user);
@@ -47,16 +52,19 @@ public class UserServiceImpl implements UserService{
 	public User save(UserRegistrationRequest registrationDto) {
 		User user = new User(registrationDto.getFirstName(), 
 				registrationDto.getLastName(), registrationDto.getEmail(),
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));	
+				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+		emailService.sendEmail(user.getEmail(),user.getId());
 		return userRepository.save(user);
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	
 		User user = userRepository.findByEmail(username);
 		if(user == null) {
-			throw new UsernameNotFoundException("Invalid username or password.");
+			throw new UsernameNotFoundException("Sai username hoặc password");
+		}
+		if (user.getState().equals(State.PENDING)){
+			throw new  UsernameNotFoundException("Tài khoản chưa được kích hoạt");
 		}
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));		
 	}
@@ -64,5 +72,9 @@ public class UserServiceImpl implements UserService{
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
-	
+	public void getValidate(String id){
+		User user = userRepository.findById(id).get();
+		user.setState(State.ACTIVE);
+		userRepository.save(user);
+	}
 }

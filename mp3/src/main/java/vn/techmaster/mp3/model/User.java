@@ -36,6 +36,8 @@ public class User {
 
 	private String avatar;
 
+	private State state;
+
 	@Column
     @ElementCollection(targetClass=Integer.class)
 	private List<Song> songs;
@@ -64,6 +66,7 @@ public class User {
 		this.roles = roles;
 		this.avatar = "/img/avatar/avatar-illustrated-03.png";
 		this.songs = null;
+		this.state = State.PENDING;
 	}
 	public String getId() {
 		return id;
@@ -82,6 +85,12 @@ public class User {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
 	}
 	public String getEmail() {
 		return email;

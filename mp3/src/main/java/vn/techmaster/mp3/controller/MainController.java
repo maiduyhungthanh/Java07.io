@@ -8,15 +8,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import io.swagger.v3.oas.annotations.Operation;
 import vn.techmaster.mp3.model.User;
 import vn.techmaster.mp3.repository.UserRepository;
+import vn.techmaster.mp3.service.UserServiceImpl;
 
 @Controller
 public class MainController {
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	UserServiceImpl userServiceImpl;
 	@GetMapping("/login")
 	public String login() {
 		return "login";
@@ -45,4 +49,9 @@ public class MainController {
 		}
         return ResponseEntity.ok(userLogin);
     }
+	@GetMapping("/validate/{id}")
+	public String validate(@PathVariable String id){
+		userServiceImpl.getValidate(id);
+		return "/";
+	}
 }
