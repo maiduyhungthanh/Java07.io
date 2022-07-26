@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Lilly Watson | Contacts</title>
+<meta charset="UTF-8">
+<link th:href="@{css/style.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{css/layout.css}" rel="stylesheet" type="text/css" />
+<script th:src="@{js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{js/cufon-yui.js}" type="text/javascript"></script>
+<script th:src="@{js/cufon-replace.js}" type="text/javascript"></script>
+<script type="text/javascript" th:src="@{js/sprites.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery.jplayer.min.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery.jplayer.settings.js}"></script>
+<script type="text/javascript" th:src="@{js/gSlider.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery.prettyPhoto.js}"></script>
+
+</head>
+<body id="page6">
+<!-- START PAGE SOURCE -->
+<div id="main">
+  <header>
+    <!-- <Menu> -->
+    <!-- <nav> -->
+    <nav class="main-nav--bg">
+      <div class="container main-nav">
+        <div class="main-nav-start">
+
+          <div class="search-wrapper">
+            <span class="active"><a href="/">Trang Chủ</a></span>
+
+            <input type="text" placeholder="Enter keywords ..." required>
+            <span style="margin-left: 15px;"><a href="/album">Album</a></span>
+            <span><a href="video.html">MV</a></span>
+            <span><a href="/singer">Ca sỹ</a></span>
+            <span><a href="/blog">Blog</a></span>
+            <span><a href="/contacts">Liên hệ</a></span>
+          </div>
+        </div>
+        <div class="main-nav-end">
+          <div class="lang-switcher-wrapper">
+            <button class="lang-switcher transparent-btn" type="button" id="ngonngu">
+              EN
+              <i data-feather="chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="lang-menu dropdown" id="table-ngonngu" style="opacity: 0;">
+              <li><a href="">English</a></li>
+              <li><a href="">French</a></li>
+              <li><a href="">VietNam</a></li>
+            </ul>
+          </div>      
+          <button class="theme-switcher gray-circle-btn" type="button" title="Sáng-Tối">
+            <span class="sr-only">Switch theme</span>
+            <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+            <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+          </button>
+          <div class="notification-wrapper">
+            <button class="gray-circle-btn dropdown-btn" title="Thông báo" type="button">
+              <span class="sr-only">To messages</span>
+              <span class="icon notification active" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="nav-user-wrapper">
+            <button class="nav-user-btn dropdown-btn" title="Trang Cá Nhân" type="button" id="canhan">
+              <span class="nav-user-img">
+                <picture id="anhdaidien">
+                  <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
+                    src="./img/avatar/avatar-illustrated-02.png" alt="User name">
+                </picture>
+              </span>
+            </button>
+            <ul class="canhan-menu dropdown" id="table-anhdaidien" style="opacity: 0;">
+              <!-- <li><a href="">Trang Cá Nhân</a></li>
+              <li><a href="">Bài hát yêu thích</a></li>
+              <li><a href="">Quản trị viên</a></li> -->
+            </ul>
+          </div>
+          <div class="nav-user-wrapper" id="dangnhap">
+            <a href="/login"><button  class="nav-user-btn dropdown-btn" style="color: red;" title="Đăng nhập" type="button">
+              Đăng nhập
+            </button></a>
+          </div>
+          <div class="nav-user-wrapper" id="dangky">
+            <a href="/registration"><button  class="nav-user-btn dropdown-btn" style="color: red;"title="Đăng ký" type="button">
+              Đăng ký
+            </button></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- --------------- -->
+
+    <h1><a href="/index">Lilly Watson</a></h1>
+    <div class="header-slider">
+      <ul>
+        <li>This is one of free website templates created by TemplateMonster.com team. This website template is
+          optimized for 1024X768 screen resolution.</li>
+        <li>This website template has several pages: About, Audio, Video, Gallery, Tour Dates, Contacts (note that
+          contact us form – doesn’t work).</li>
+        <li>This Free Music Website Template goes with two packages – with PSD source files and without them. PSD
+          source files are available for free.</li>
+      </ul>
+    </div>
+    <a href="#" class="hs-prev"><img src="images/prev.png" alt=""></a> <a href="#" class="hs-next"><img
+        src="images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
+  </header>
+  <div class="tumbvr">
+    <div class="tumbvr-mask"></div>
+    <ul>
+      <li><img src="images/01.jpg" alt=""></li>
+      <li><img src="images/02.jpg" alt=""></li>
+      <li><img src="images/03.jpg" alt=""></li>
+      <li><img src="images/04.jpg" alt=""></li>
+      <li><img src="images/05.jpg" alt=""></li>
+      <li><img src="images/06.jpg" alt=""></li>
+      <li><img src="images/07.jpg" alt=""></li>
+      <li><img src="images/08.jpg" alt=""></li>
+      <li><img src="images/09.jpg" alt=""></li>
+      <li><img src="images/10.jpg" alt=""></li>
+    </ul>
+  </div>
+  <article id="content">
+    <div class="col-1 album">
+      <h2 style="font-size:30px ;">Top Album</h2>
+      <div class="p2 " style="border:2px 2px 5px #999999 ;">
+        <h2 style="color: greenyellow;">New Album</h2>
+        <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+          class="more">Read More</a>
+      </div>
+      <div class="p2">
+        <h3 style="color: greenyellow;width: 110px;max-width: none;">New Album</h3>
+        <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+          class="more">Read More</a>
+      </div>
+    </div>
+    <div class="col-2">
+      <h2>Contact Form</h2>
+      <form action="#" id="form1">
+        <fieldset>
+          <label>Your Name:
+            <input type="text">
+          </label>
+          <label>Your E-mail:
+            <input type="email">
+          </label>
+          <label>Your City:
+            <input type="text">
+          </label>
+          <label class="msg">Your Message:
+            <textarea></textarea>
+          </label>
+          <div class="btns"><a href="#" class="more">Clear</a><a href="#" class="more">Send</a></div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-3">
+      <h2>Our Contacts</h2>
+      <ul class="contacts blo">
+        <li><span>Country:</span>USA</li>
+        <li><span>State:</span>California</li>
+        <li><span>City:</span>San Diego</li>
+        <li><span>Telephone:</span>+354 5635600</li>
+        <li><span>Email:</span><a href="#">lilly@mail.com</a></li>
+      </ul>
+      <h2>Miscellaneous</h2>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum.</p>
+      <h2>Newsletter</h2>
+      <form action="#" id="subscribe">
+        <fieldset>
+          <label>
+            <input type="text">
+          </label>
+          <input type="submit" value="">
+        </fieldset>
+      </form>
+      <h2>Find Me</h2>
+      <ul class="soc-ico">
+        <li><a href="#"><img src="images/facebook.png" alt=""></a></li>
+        <li><a href="#"><img src="images/twitter.png" alt=""></a></li>
+        <li><a href="#"><img src="images/myspace.png" alt=""></a></li>
+        <li><a href="#"><img src="images/linkedin.png" alt=""></a></li>
+      </ul>
+    </div>
+  </article>
+  <div class="af clear"></div>
+</div>
+<footer>
+  <div class="footerlink">
+    <p class="lf">Copyright &copy; 2011 <a href="#">SiteName</a> - All Rights Reserved</p>
+    <p class="rf">Design by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript">Cufon.now()
+$(function () {
+    $('nav,.more,.header-more').sprites()
+    $('.header-slider').gSlider({
+        prevBu: '.hs-prev',
+        nextBu: '.hs-next'
+    })
+    $('a[rel=prettyPhoto]').each(function () {
+        var th = $(this),
+            pb
+            th.append(pb = $('<span class="playbutt"></span>').css({
+                opacity: .7
+            }))
+            pb.bind('mouseenter', function () {
+                $(this).stop().animate({
+                    opacity: .9
+                })
+            }).bind('mouseleave', function () {
+                $(this).stop().animate({
+                    opacity: .7
+                })
+            })
+    }).prettyPhoto({
+        theme: 'dark_square'
+    })
+})
+</script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>

@@ -27,12 +27,14 @@ public class Song implements Serializable{
     private String mp3;
     private String avatar;
     private String lyric;
+    private Integer view;
 
-    public Song(String name, String mp3, String avatar) {
+    public Song(String name, String mp3, String avatar, Integer view) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.mp3 = mp3;
         this.avatar = avatar;
+        this.view = view;
     }
     // mot ca sy co nhieu bai hat
     @JsonIgnore
@@ -65,7 +67,21 @@ public class Song implements Serializable{
           });
           return listCategorys;
         }
-
+       // mot bai hat co nhieu user yêu thích
+       @JsonIgnore
+       @OneToMany(mappedBy = "song",cascade = CascadeType.ALL)
+       private List<SongUser> songUsers = new ArrayList<>();
+     
+       
+       @JsonGetter(value = "users")
+       @Transient
+       public List<User> getUsers(){
+         List<User> listUsers = new ArrayList<>();
+         songUsers.stream().forEach(songUser->{
+          listUsers.add(songUser.getUser());
+         });
+         return listUsers;
+       }
 
 
 }

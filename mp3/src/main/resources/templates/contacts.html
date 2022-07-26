@@ -20,39 +20,117 @@
 <!-- START PAGE SOURCE -->
 <div id="main">
   <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="audio.html">Audio</a></li>
-        <li><a href="video.html">Video</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="tour-dates.html">Tour Dates</a></li>
-        <li class="active"><a href="/contacts">Contacts</a></li>
-      </ul>
+    <!-- <Menu> -->
+    <!-- <nav> -->
+    <nav class="main-nav--bg">
+      <div class="container main-nav">
+        <div class="main-nav-start">
+
+          <div class="search-wrapper">
+            <span class="active"><a href="/">Trang Chủ</a></span>
+
+            <input id="keyword" type="text" placeholder="Enter keywords ..." required>
+            <span style="margin-left: 15px;"><a href="/album">Album</a></span>
+            <span><a href="video.html">MV</a></span>
+            <span><a href="/singer">Ca sỹ</a></span>
+            <span><a href="/blog">Blog</a></span>
+            <span><a href="/contacts">Liên hệ</a></span>
+          </div>
+        </div>
+        <div class="main-nav-end">
+          <div class="lang-switcher-wrapper">
+            <button class="lang-switcher transparent-btn" type="button" id="ngonngu">
+              EN
+              <i data-feather="chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="lang-menu dropdown" id="table-ngonngu" style="opacity: 0;">
+              <li><a href="">English</a></li>
+              <li><a href="">French</a></li>
+              <li><a href="">VietNam</a></li>
+            </ul>
+          </div>      
+          <button class="theme-switcher gray-circle-btn" type="button" title="Sáng-Tối">
+            <span class="sr-only">Switch theme</span>
+            <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+            <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+          </button>
+          <div class="notification-wrapper">
+            <button class="gray-circle-btn dropdown-btn" title="Thông báo" type="button">
+              <span class="sr-only">To messages</span>
+              <span class="icon notification active" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="nav-user-wrapper">
+            <button class="nav-user-btn dropdown-btn" title="Trang Cá Nhân" type="button" id="canhan">
+              <span class="nav-user-img">
+                <picture id="anhdaidien">
+                  <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
+                    src="./img/avatar/avatar-illustrated-02.png" alt="User name">
+                </picture>
+              </span>
+            </button>
+            <ul class="canhan-menu dropdown" id="table-anhdaidien" style="opacity: 0;">
+              <!-- <li><a href="">Trang Cá Nhân</a></li>
+              <li><a href="">Bài hát yêu thích</a></li>
+              <li><a href="">Quản trị viên</a></li> -->
+            </ul>
+          </div>
+          <div class="nav-user-wrapper" id="dangnhap">
+            <a href="/login"><button  class="nav-user-btn dropdown-btn" style="color: red;" title="Đăng nhập" type="button">
+              Đăng nhập
+            </button></a>
+          </div>
+          <div class="nav-user-wrapper" id="dangky">
+            <a href="/registration"><button  class="nav-user-btn dropdown-btn" style="color: red;"title="Đăng ký" type="button">
+              Đăng ký
+            </button></a>
+          </div>
+        </div>
+      </div>
     </nav>
-    <h1><a href="index.html">Lilly Watson</a></h1>
+    <!-- --------------- -->
+
+    <h1><a href="/index">Lilly Watson</a></h1>
     <div class="header-slider">
       <ul>
-        <li>This is one of free website templates created by TemplateMonster.com team. This website template is optimized for 1024X768 screen resolution.</li>
-        <li>This website template has several pages: About, Audio, Video, Gallery, Tour Dates, Contacts (note that contact us form – doesn’t work).</li>
-        <li>This Free Music Website Template goes with two packages – with PSD source files and without them. PSD source files are available for free.</li>
+        <li>This is one of free website templates created by TemplateMonster.com team. This website template is
+          optimized for 1024X768 screen resolution.</li>
+        <li>This website template has several pages: About, Audio, Video, Gallery, Tour Dates, Contacts (note that
+          contact us form – doesn’t work).</li>
+        <li>This Free Music Website Template goes with two packages – with PSD source files and without them. PSD
+          source files are available for free.</li>
       </ul>
     </div>
-    <a href="#" class="hs-prev"><img src="images/prev.png" alt=""></a> <a href="#" class="hs-next"><img src="images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a> </header>
+    <a href="#" class="hs-prev"><img src="images/prev.png" alt=""></a> <a href="#" class="hs-next"><img
+        src="images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
+  </header>
+  <div class="tumbvr">
+    <div class="tumbvr-mask"></div>
+    <ul>
+      <li><img src="images/01.jpg" alt=""></li>
+      <li><img src="images/02.jpg" alt=""></li>
+      <li><img src="images/03.jpg" alt=""></li>
+      <li><img src="images/04.jpg" alt=""></li>
+      <li><img src="images/05.jpg" alt=""></li>
+      <li><img src="images/06.jpg" alt=""></li>
+      <li><img src="images/07.jpg" alt=""></li>
+      <li><img src="images/08.jpg" alt=""></li>
+      <li><img src="images/09.jpg" alt=""></li>
+      <li><img src="images/10.jpg" alt=""></li>
+    </ul>
+  </div>
   <article id="content">
-    <div class="col-1">
-      <div class="p2">
-        <h2>New Album</h2>
-        <img src="images/col-1-img1.png" class="p1" alt=""> <a href="#" class="more">Read More</a></div>
-      <div class="p2">
-        <h2>New Video</h2>
-        <a href="#"><img class="p1" src="images/col1-video-thumb1.jpg" alt=""></a>
-        <div class="alc"><a href="video.html">More Videos</a></div>
+    <div class="col-1 album">
+      <h2 style="font-size:30px ;">Top Album</h2>
+      <div class="p2 " style="border:2px 2px 5px #999999 ;">
+        <h2 style="color: greenyellow;">New Album</h2>
+        <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+          class="more">Read More</a>
       </div>
       <div class="p2">
-        <h2>Latest Photos</h2>
-        <a href="tour-dates.html"><img class="p1" src="images/col1-img2.jpg" alt=""></a>
-        <div class="alc"><a href="tour-dates.html">View Gallery</a></div>
+        <h3 style="color: greenyellow;width: 110px;max-width: none;">New Album</h3>
+        <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+          class="more">Read More</a>
       </div>
     </div>
     <div class="col-2">

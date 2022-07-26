@@ -2,12 +2,14 @@ package vn.techmaster.mp3.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import vn.techmaster.mp3.model.Singer;
+import vn.techmaster.mp3.exception.NotFoundException;
+import vn.techmaster.mp3.repository.CategoryRepo;
+import vn.techmaster.mp3.repository.SingerRepo;
 import vn.techmaster.mp3.service.EmailService;
 import vn.techmaster.mp3.service.SongSingerService;
 
@@ -17,9 +19,14 @@ public class SongSingerController {
     @Autowired
     SongSingerService songSingerService;
     @Autowired
+    CategoryRepo categoryRepo;
+    @Autowired
+    SingerRepo singerRepo;
+    @Autowired
     EmailService emailService;
+
     // trang chủ
-    @GetMapping(value = { "/", "/none"})
+    @GetMapping(value = { "/", "/none" })
     public String index() {
         return "index";
     }
@@ -45,20 +52,25 @@ public class SongSingerController {
     // detail ca sỹ
     @GetMapping(value = "/singer|{id}")
     public String singerById(@PathVariable String id) {
+        if(singerRepo.findById(id).isEmpty()){
+            throw new NotFoundException("Địa chỉ không tồn tại");
+        }
         return "singerById";
     }
 
     // update ca sỹ
     @GetMapping(value = "/singer-edit|{id}")
-    public String singerByIdEdit(@PathVariable String id, Model model) {
-        Singer singer = songSingerService.SingerById(id).get();
-        model.addAttribute("singer", singer);
+    public String singerByIdEdit(@PathVariable String id) {
+        if(singerRepo.findById(id).isEmpty()){
+            throw new NotFoundException("Địa chỉ không tồn tại");
+        }
         return "singerByIdEdit";
     }
 
     // detail bài hát
     @GetMapping(value = "/song|{id}")
     public String songById(@PathVariable String id) {
+        songSingerService.updateView(id);
         return "songById";
     }
 
@@ -72,6 +84,12 @@ public class SongSingerController {
     @GetMapping("/addsong")
     public String addSong() {
         return "addSong";
+    }
+
+    // tìm kiếm bài hát theo keyword
+    @GetMapping("/song")
+    public String songByKeyword(@RequestParam String keyword) {
+        return "songByKeyword";
     }
 
     // blog
@@ -97,4 +115,14 @@ public class SongSingerController {
     public String getAddAlbum() {
         return "addAlbum";
     }
+
+    // update album
+    @GetMapping(value = "/album-edit|{id}")
+    public String albumByIdEdit(@PathVariable String id) {
+        if(categoryRepo.findById(id).isEmpty()){
+            throw new NotFoundException("Đường truyền không chính xác");
+        }
+        return "albumByIdEdit";
+    }
+
 }

@@ -20,6 +20,7 @@ public class SongRequest{
     private String mp3;
     private String avatar;
     private String lyric;
+    private Integer view;
     private List<SongSinger> songSingers = new ArrayList<>();
     private List<SongCategory> songCategorys = new ArrayList<>();
 

@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import vn.techmaster.mp3.model.Role;
 import vn.techmaster.mp3.service.UserService;
 
 
@@ -44,9 +43,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/","/singer","/singer|{id}","/song|{id}","/registration/**","/tendangnhap","/validate/**").permitAll()
-		.antMatchers("/addsong").access("hasAnyRole('ROLE_USER')")
-		.antMatchers("/album").access("hasAnyRole('ROLE_ADMIN')")
+		.antMatchers("/","/singer","/singer|{id}","/song|{id}","/registration/**","/tendangnhap","/validate/**","/song**","/album","/album|{id}").permitAll()
+		.antMatchers("/user|**").access("hasAnyRole('ROLE_USER')")
+		.antMatchers("/addsong","/addsinger","/singer-edit|{id}","/song-edit|{id}","/addalbum","/album-edit|{id}").access("hasAnyRole('ROLE_OPERATOR')")
+		.antMatchers("/quantrivien").access("hasAnyRole('ROLE_ADMIN')")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -63,6 +63,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return (web) -> web.ignoring().antMatchers("/images/**", "/img/**", "/api/**","/assest/**","/css/**","/js/**"
-		,"/music/**","/uploads/**");
+		,"/music/**","/uploads/**","/role/**");
 	}
 }

@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Lilly Watson</title>
+  <meta charset="UTF-8">
+  <link th:href="@{css/style.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{css/layout.css}" rel="stylesheet" type="text/css" />
+  <script th:src="@{js/jquery.min.js}" type="text/javascript"></script>
+  <script th:src="@{js/cufon-yui.js}" type="text/javascript"></script>
+  <script th:src="@{js/cufon-replace.js}" type="text/javascript"></script>
+  <script type="text/javascript" th:src="@{js/sprites.js}"></script>
+  <script type="text/javascript" th:src="@{js/jquery.jplayer.min.js}"></script>
+  <script type="text/javascript" th:src="@{js/gSlider.js}"></script>
+  <script type="text/javascript" th:src="@{js/jquery.easing.1.3.js}"></script>
+  <script type="text/javascript" th:src="@{js/jquery.prettyPhoto.js}"></script>
+
+  <link rel="stylesheet" th:href="@{css/style.min.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{css/home.css}">
+  <!-- Favicon -->
+  <link rel="shortcut icon" th:href="@{img/svg/logo.svg}" type="image/x-icon">
+</head>
+
+<body id="page1">
+  <!-- START PAGE SOURCE -->
+  <div id="main">
+    <header>
+      <!-- <Menu> -->
+      <!-- <nav> -->
+      <nav class="main-nav--bg">
+        <div class="container main-nav">
+          <div class="main-nav-start">
+
+            <div class="search-wrapper">
+              <span class="active"><a href="/">Trang Chủ</a></span>
+
+              <input id="keyword" type="text" placeholder="Enter keywords ..." required>
+              <span style="margin-left: 15px;"><a href="/album">Album</a></span>
+              <span><a href="video.html">MV</a></span>
+              <span><a href="/singer">Ca sỹ</a></span>
+              <span><a href="/blog">Blog</a></span>
+              <span><a href="/contacts">Liên hệ</a></span>
+            </div>
+          </div>
+          <div class="main-nav-end">
+            <div class="lang-switcher-wrapper">
+              <button class="lang-switcher transparent-btn" type="button" id="ngonngu">
+                EN
+                <i data-feather="chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul class="lang-menu dropdown" id="table-ngonngu" style="opacity: 0;">
+                <li><a href="">English</a></li>
+                <li><a href="">French</a></li>
+                <li><a href="">VietNam</a></li>
+              </ul>
+            </div>
+            <button class="theme-switcher gray-circle-btn" type="button" title="Sáng-Tối">
+              <span class="sr-only">Switch theme</span>
+              <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+              <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+            </button>
+            <div class="notification-wrapper">
+              <button class="gray-circle-btn dropdown-btn" title="Thông báo" type="button">
+                <span class="sr-only">To messages</span>
+                <span class="icon notification active" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="nav-user-wrapper">
+              <button class="nav-user-btn dropdown-btn" title="Trang Cá Nhân" type="button" id="canhan">
+                <span class="nav-user-img">
+                  <picture id="anhdaidien">
+                    <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
+                      src="./img/avatar/avatar-illustrated-02.png" alt="User name">
+                  </picture>
+                </span>
+              </button>
+              <ul class="canhan-menu dropdown" id="table-anhdaidien" style="opacity: 0;">
+                <!-- <li><a href="">Trang Cá Nhân</a></li>
+                <li><a href="">Bài hát yêu thích</a></li>
+                <li><a href="">Quản trị viên</a></li> -->
+              </ul>
+            </div>
+            <div class="nav-user-wrapper" id="dangnhap">
+              <a href="/login"><button class="nav-user-btn dropdown-btn" style="color: red;" title="Đăng nhập"
+                  type="button">
+                  Đăng nhập
+                </button></a>
+            </div>
+            <div class="nav-user-wrapper" id="dangky">
+              <a href="/registration"><button class="nav-user-btn dropdown-btn" style="color: red;" title="Đăng ký"
+                  type="button">
+                  Đăng ký
+                </button></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- --------------- -->
+
+      <h1><a href="/index">Lilly Watson</a></h1>
+      <div class="header-slider">
+        <ul>
+          <li>This is one of free website templates created by TemplateMonster.com team. This website template is
+            optimized for 1024X768 screen resolution.</li>
+          <li>This website template has several pages: About, Audio, Video, Gallery, Tour Dates, Contacts (note that
+            contact us form – doesn’t work).</li>
+          <li>This Free Music Website Template goes with two packages – with PSD source files and without them. PSD
+            source files are available for free.</li>
+        </ul>
+      </div>
+      <a href="#" class="hs-prev"><img src="images/prev.png" alt=""></a> <a href="#" class="hs-next"><img
+          src="images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
+    </header>
+    <div class="tumbvr">
+      <div class="tumbvr-mask"></div>
+      <ul>
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+        <li><img src="images/03.jpg" alt=""></li>
+        <li><img src="images/04.jpg" alt=""></li>
+        <li><img src="images/05.jpg" alt=""></li>
+        <li><img src="images/06.jpg" alt=""></li>
+        <li><img src="images/07.jpg" alt=""></li>
+        <li><img src="images/08.jpg" alt=""></li>
+        <li><img src="images/09.jpg" alt=""></li>
+        <li><img src="images/10.jpg" alt=""></li>
+      </ul>
+    </div>
+    <article id="content">
+      <div class="col-1 album">
+        <h2 style="font-size:30px ;">Top Album</h2>
+        <div class="p2 " style="border:2px 2px 5px #999999 ;">
+          <h2 style="color: greenyellow;">New Album</h2>
+          <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+            class="more">Read More</a>
+        </div>
+        <div class="p2">
+          <h3 style="color: greenyellow;width: 110px;max-width: none;">New Album</h3>
+          <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+            class="more">Read More</a>
+        </div>
+      </div>
+      <div class="col-2" style="width: 506px;">
+        <div id="singer-by-id">
+          <!-- start mp3 -->
+          <h2 class="pl" style="color: red;width: 550px;margin-bottom: -70px;">Máy Phát Nhạc</h2>
+          <div class="music-container" id="music-container" style="margin-bottom: 30px;">
+            <div class="music-info">
+              <h4 id="title" style="color: red;font-size: 20px;"></h4>
+              <div class="progress-container" id="progress-container">
+                <div class="progress" id="progress"></div>
+              </div>
+            </div>
+
+            <audio src="music/mot_phut.mp3" id="audio"></audio>
+
+            <div class="img-container">
+              <img src="images/lambada.jpg" id="cover" style=" width: 100px;height: 100px;" />
+            </div>
+            <div class="navigation" style="margin-top: 40px;margin-left: 70px;">
+              <button id="prev" class="action-btn">
+                <i class="fas fa-backward"></i>
+              </button>
+              <button id="play" class="action-btn action-btn-big">
+                <i class="fas fa-play"></i>
+              </button>
+              <button id="next" class="action-btn">
+                <i class="fas fa-forward"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- end mp3 -->
+
+          <p style="color: blue; margin-right: -400px;font-size: 20px;" id="list-song">Danh sách bài hát của Lệ Rơi</p>
+        </div>
+        <div class="users-table  table-border">
+          <table class="posts-table">
+            <thead>
+              <tr class="users-table-info">
+                <th>
+                  <label class="users-table__checkbox ms-20">
+                    Avatar
+                  </label>
+                </th>
+                <th>Tên bài hát</th>
+                <th>Ca sỹ</th>
+                <th>Xóa</th>
+              </tr>
+            </thead>
+            <tbody id="song-table">
+              </tr>
+              <tr>
+                <td>
+                  <label class="users-table__checkbox">
+                    <div class="categories-table-img">
+                      <a href=""><img src="../images/01.jpg" alt=""></a>
+                    </div>
+                  </label>
+                </td>
+                <td>
+                  Start a blog to reach your creative peak
+                </td>
+                <td>
+                  <div class="pages-table-img">
+                    Annette Black
+                  </div>
+                </td>
+                <td><span class="badge-pending">1.000.000 view</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="users-table__checkbox">
+                    <div class="categories-table-img">
+                      <picture>
+                        <source srcset="./img/categories/02.webp" type="image/webp"><img src="./img/categories/02.jpg"
+                          alt="category">
+                      </picture>
+                    </div>
+                  </label>
+                </td>
+                <td>
+                  Start a blog to reach your creative peak
+                </td>
+                <td>
+                  <div class="pages-table-img">
+                    Annette Black
+                  </div>
+                </td>
+                <td class="btn_del" title=""><img src="/img/svg/delete.png" </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-3">
+        Bảng xếp hạng
+        <article class="white-block">
+          <div class="top-cat-title">
+            <h3>Top categories</h3>
+            <p>28 Categories, 1400 Posts</p>
+          </div>
+          <ul class="top-cat-list bxh">
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  Lifestyle <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Dailiy lifestyle articles <span class="purple">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  Tutorials <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Coding tutorials <span class="blue">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  Technology <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Dailiy technology articles <span class="danger">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  UX design <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  UX design tips <span class="success">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  Interaction tips <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Interaction articles <span class="warning">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  App development <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Mobile development articles <span class="warning">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  Nature <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Wildlife animal articles <span class="warning">+472</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="##">
+                <div class="top-cat-list__title">
+                  Geography <span>8.2k</span>
+                </div>
+                <div class="top-cat-list__subtitle">
+                  Geography articles <span class="primary">+472</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </article>
+        <ul class="soc-ico">
+          <li><a href="#"><img src="../images/facebook.png" alt=""></a></li>
+          <li><a href="#"><img src="../images/twitter.png" alt=""></a></li>
+          <li><a href="#"><img src="../images/myspace.png" alt=""></a></li>
+          <li><a href="#"><img src="../images/linkedin.png" alt=""></a></li>
+        </ul>
+      </div>
+    </article>
+    <div class="af clear"></div>
+  </div>
+  <footer>
+    <div class="footerlink">
+      <p class="lf">Copyright &copy; 2011 <a href="#">SiteName</a> - All Rights Reserved</p>
+      <p class="rf">Design by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+      <div style="clear:both;"></div>
+    </div>
+  </footer>
+  <script type="text/javascript">Cufon.now()
+    $(function () {
+      $('nav,.more,.header-more').sprites()
+
+      $('.header-slider').gSlider({
+        prevBu: '.hs-prev',
+        nextBu: '.hs-next'
+      })
+    })
+    $(window).load(function () {
+      $('.tumbvr')._fw({
+        tumbvr: {
+          duration: 2000,
+          easing: 'easeOutQuart'
+        }
+      }).bind('click', function () {
+        location = "gallery.html"
+      })
+      $('a[rel=prettyPhoto]').each(function () {
+        var th = $(this),
+          pb
+        th.append(pb = $('<span class="playbutt"></span>').css({
+          opacity: .7
+        }))
+        pb.bind('mouseenter', function () {
+          $(this).stop().animate({
+            opacity: .9
+          })
+        }).bind('mouseleave', function () {
+          $(this).stop().animate({
+            opacity: .7
+          })
+        })
+      }).prettyPhoto({
+        theme: 'dark_square'
+      })
+    })
+  </script>
+  <!-- END PAGE SOURCE -->
+  <script src="../js/script.js"></script>
+
+  <!-- Chart library -->
+  <script src="../js/chart.min.js"></script>
+  <!-- Icons library -->
+  <script src="../js/feather.min.js"></script>
+  <!-- Custom scripts -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script th:src="@{api/apiUserLikeSong.js}"></script>
+</body>
+
+</html>

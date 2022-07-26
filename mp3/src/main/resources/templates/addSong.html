@@ -40,107 +40,61 @@
             <div class="search-wrapper">
               <span class="active"><a href="/">Trang Chủ</a></span>
 
-              <input type="text" placeholder="Enter keywords ..." required>
-              <span style="margin-left: 15px;"><a href="audio.html">Album</a></span>
+              <input id="keyword" type="text" placeholder="Enter keywords ..." required>
+              <span style="margin-left: 15px;"><a href="/album">Album</a></span>
               <span><a href="video.html">MV</a></span>
               <span><a href="/singer">Ca sỹ</a></span>
-              <span><a href="tour-dates.html">Blog</a></span>
+              <span><a href="/blog">Blog</a></span>
               <span><a href="/contacts">Liên hệ</a></span>
             </div>
           </div>
           <div class="main-nav-end">
-            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-              <span class="sr-only">Toggle menu</span>
-              <span class="icon menu-toggle--gray" aria-hidden="true"></span>
-            </button>
             <div class="lang-switcher-wrapper">
-              <button class="lang-switcher transparent-btn" type="button">
+              <button class="lang-switcher transparent-btn" type="button" id="ngonngu">
                 EN
                 <i data-feather="chevron-down" aria-hidden="true"></i>
               </button>
-              <ul class="lang-menu dropdown">
-                <li><a href="##">English</a></li>
-                <li><a href="##">French</a></li>
-                <li><a href="##">Uzbek</a></li>
+              <ul class="lang-menu dropdown" id="table-ngonngu" style="opacity: 0;">
+                <li><a href="">English</a></li>
+                <li><a href="">French</a></li>
+                <li><a href="">VietNam</a></li>
               </ul>
-            </div>
-            <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+            </div>      
+            <button class="theme-switcher gray-circle-btn" type="button" title="Sáng-Tối">
               <span class="sr-only">Switch theme</span>
               <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
               <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
             </button>
             <div class="notification-wrapper">
-              <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
+              <button class="gray-circle-btn dropdown-btn" title="Thông báo" type="button">
                 <span class="sr-only">To messages</span>
                 <span class="icon notification active" aria-hidden="true"></span>
               </button>
-              <ul class="users-item-dropdown notification-dropdown dropdown">
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon info">
-                      <i data-feather="check"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">System just updated</span>
-                      <span class="notification-dropdown__subtitle">The system has been successfully upgraded. Read
-                        more
-                        here.</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon danger">
-                      <i data-feather="info" aria-hidden="true"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">The cache is full!</span>
-                      <span class="notification-dropdown__subtitle">Unnecessary caches take up a lot of memory space
-                        and
-                        interfere ...</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon info">
-                      <i data-feather="check" aria-hidden="true"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">New Subscriber here!</span>
-                      <span class="notification-dropdown__subtitle">A new subscriber has subscribed.</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="link-to-page" href="##">Go to Notifications page</a>
-                </li>
-              </ul>
             </div>
             <div class="nav-user-wrapper">
-              <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
-                <span class="sr-only">My profile</span>
+              <button class="nav-user-btn dropdown-btn" title="Trang Cá Nhân" type="button" id="canhan">
                 <span class="nav-user-img">
-                  <picture>
-                    <source srcset=".././img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
-                      src=".././img/avatar/avatar-illustrated-02.png" alt="User name">
+                  <picture id="anhdaidien">
+                    <source srcset="./img/avatar/avatar-illustrated-02.webp" type="image/webp"><img
+                      src="./img/avatar/avatar-illustrated-02.png" alt="User name">
                   </picture>
                 </span>
               </button>
-              <ul class="users-item-dropdown nav-user-dropdown dropdown">
-                <li><a href="##">
-                    <i data-feather="user" aria-hidden="true"></i>
-                    <span>Profile</span>
-                  </a></li>
-                <li><a href="##">
-                    <i data-feather="settings" aria-hidden="true"></i>
-                    <span>Account settings</span>
-                  </a></li>
-                <li><a class="danger" href="##">
-                    <i data-feather="log-out" aria-hidden="true"></i>
-                    <span>Log out</span>
-                  </a></li>
+              <ul class="canhan-menu dropdown" id="table-anhdaidien" style="opacity: 0;">
+                <!-- <li><a href="">Trang Cá Nhân</a></li>
+                <li><a href="">Bài hát yêu thích</a></li>
+                <li><a href="">Quản trị viên</a></li> -->
               </ul>
+            </div>
+            <div class="nav-user-wrapper" id="dangnhap">
+              <a href="/login"><button  class="nav-user-btn dropdown-btn" style="color: red;" title="Đăng nhập" type="button">
+                Đăng nhập
+              </button></a>
+            </div>
+            <div class="nav-user-wrapper" id="dangky">
+              <a href="/registration"><button  class="nav-user-btn dropdown-btn" style="color: red;"title="Đăng ký" type="button">
+                Đăng ký
+              </button></a>
             </div>
           </div>
         </div>
@@ -159,36 +113,37 @@
         </ul>
       </div>
       <a href="#" class="hs-prev"><img src="images/prev.png" alt=""></a> <a href="#" class="hs-next"><img
-          src="../images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
+          src="images/next.png" alt=""></a> <a href="#" class="header-more">Read More</a>
     </header>
     <div class="tumbvr">
       <div class="tumbvr-mask"></div>
       <ul>
-        <li><img src="../images/01.jpg" alt=""></li>
-        <li><img src="../images/02.jpg" alt=""></li>
-        <li><img src="../images/03.jpg" alt=""></li>
-        <li><img src="../images/04.jpg" alt=""></li>
-        <li><img src="../images/05.jpg" alt=""></li>
-        <li><img src="../images/06.jpg" alt=""></li>
-        <li><img src="../images/07.jpg" alt=""></li>
-        <li><img src="../images/08.jpg" alt=""></li>
-        <li><img src="../images/09.jpg" alt=""></li>
-        <li><img src="../images/10.jpg" alt=""></li>
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+        <li><img src="images/03.jpg" alt=""></li>
+        <li><img src="images/04.jpg" alt=""></li>
+        <li><img src="images/05.jpg" alt=""></li>
+        <li><img src="images/06.jpg" alt=""></li>
+        <li><img src="images/07.jpg" alt=""></li>
+        <li><img src="images/08.jpg" alt=""></li>
+        <li><img src="images/09.jpg" alt=""></li>
+        <li><img src="images/10.jpg" alt=""></li>
       </ul>
     </div>
     <article id="content">
-      <div class="col-1">
-        <div class="p2">
-          <h2>New Album</h2>
-          <img src="../images/col-1-img1.png" class="p1" alt=""> <a href="#" class="more">Read More</a>
+      <div class="col-1 album">
+        <h2 style="font-size:30px ;">Top Album</h2>
+        <div class="p2 " style="border:2px 2px 5px #999999 ;">
+          <h2 style="color: greenyellow;">New Album</h2>
+          <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+            class="more">Read More</a>
         </div>
         <div class="p2">
-          <h2>New Video</h2>
-          <a href="#"><img class="p1" src="../images/col1-video-thumb1.jpg" alt=""></a>
-          <div class="alc"><a href="video.html">More Videos</a></div>
+          <h3 style="color: greenyellow;width: 110px;max-width: none;">New Album</h3>
+          <img src="images/col-1-img1.png" style="height: 110px;width: 110px;max-width: none;"> <a href="#"
+            class="more">Read More</a>
         </div>
       </div>
-      <!-- <div class="col-2" style="width: 506px;"> -->
       <div class="col-2">
 
         <main class="page-center">
@@ -230,7 +185,7 @@
               <input type="file" id="mp3El" class="d-none" style="background-color: transparent; color: aqua;">
               <p id="linkmp3" style="display: none;">123</p>
               <p id="id_singer" style="display: none;"></p>
-              <p id="id_album"></p>
+              <p id="id_album" style="display: none;"></p>
               <br>
               <br>
               <a href="/singer"><button class="form-btn primary-default-btn transparent-btn" id="btn-save">Cập
@@ -248,7 +203,7 @@
           <div class="top-cat-title">
             <h3>Bảng xếp hạng</h3>
           </div>
-          <ul class="top-cat-list">
+          <ul class="top-cat-list bxh">
             <li>
               <a href="##">
                 <div class="top-cat-list__title">

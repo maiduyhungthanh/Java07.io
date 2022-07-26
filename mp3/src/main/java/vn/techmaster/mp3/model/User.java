@@ -1,7 +1,10 @@
 package vn.techmaster.mp3.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -13,12 +16,21 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+
 import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name =  "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@AllArgsConstructor
 public class User {
 	
 	@Id
@@ -37,10 +49,6 @@ public class User {
 	private String avatar;
 
 	private State state;
-
-	@Column
-    @ElementCollection(targetClass=Integer.class)
-	private List<Song> songs;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
@@ -65,9 +73,23 @@ public class User {
 		this.password = password;
 		this.roles = roles;
 		this.avatar = "/img/avatar/avatar-illustrated-03.png";
-		this.songs = null;
 		this.state = State.PENDING;
 	}
+	 // Một User có Nhiều Bài Hát Yêu Thích
+	 @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	 @JsonIgnore
+	 private List<SongUser> songUsers = new ArrayList<>();
+   
+	 @JsonGetter(value = "songs")
+	 @Transient
+	 public Map<String, String> getUsers() {
+	   Map<String, String> songs = new HashMap<>();
+	   songUsers.stream().forEach( songUser -> {
+				songs.put(songUser.getSong().getId(), songUser.getSong().getName());
+			   }
+	   );
+	   return songs;
+	 }
 	public String getId() {
 		return id;
 	}
@@ -116,10 +138,12 @@ public class User {
 	public String getAvatar() {
 		return avatar;
 	}
-	public List<Song> getSongs() {
-		return songs;
+
+	public List<SongUser> getSongUsers() {
+		return songUsers;
 	}
-	public void setSongs(List<Song> songs) {
-		this.songs = songs;
+
+	public void setSongUsers(List<SongUser> songUsers) {
+		this.songUsers = songUsers;
 	}
 }

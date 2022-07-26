@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
   <title>Lilly Watson</title>
   <meta charset="UTF-8">
@@ -17,13 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
   <!-- Favicon -->
   <link rel="shortcut icon" th:href="@{img/svg/logo.svg}" type="image/x-icon">
-
-
-
-
-
 </head>
-
 <body id="page1">
   <!-- START PAGE SOURCE -->
   <div id="main">
@@ -37,7 +30,7 @@
             <div class="search-wrapper">
               <span class="active"><a href="/">Trang Chủ</a></span>
 
-              <input type="text" placeholder="Enter keywords ..." required>
+              <input id="keyword" type="text" placeholder="Enter keywords ..." required>
               <span style="margin-left: 15px;"><a href="/album">Album</a></span>
               <span><a href="video.html">MV</a></span>
               <span><a href="/singer">Ca sỹ</a></span>
@@ -78,9 +71,6 @@
                 </span>
               </button>
               <ul class="canhan-menu dropdown" id="table-anhdaidien" style="opacity: 0;">
-                <!-- <li><a href="">Trang Cá Nhân</a></li>
-                <li><a href="">Bài hát yêu thích</a></li>
-                <li><a href="">Quản trị viên</a></li> -->
               </ul>
             </div>
             <div class="nav-user-wrapper" id="dangnhap">
@@ -142,8 +132,10 @@
         </div>
       </div>
       <div class="col-2">
-        <div>
-          <h1><a href="/addsong" style="color:red;background-color:yellow;">Thêm Bài Hát</a></h1>
+        <div style="display: flex;width: 550px;" class="admin">
+          <h1><a href="/addsong" style="margin: 15px;" title="Thêm Bài Hát"><img src="/img/svg/addSong.png" alt="" width="50px"></a></h1>
+          <h1><a href="/addsinger" style="margin: 15px;" title="Thêm Ca Sỹ"><img src="/img/svg/addSinger.png" alt="" width="50px"></a></h1>
+          <h1><a href="/addalbum" style="margin: 15px;" title="Thêm Album"><img src="/img/svg/addAlbum.png" alt="" width="50px"></a></h1>
         </div><br>
         <!-- start mp3 -->
         <h2 class="pl" style="color: red;width: 550px;margin-bottom: -70px;">Máy Phát Nhạc</h2>
@@ -172,7 +164,6 @@
             </button>
           </div>
         </div>
-
         <!-- end mp3 -->
         <h2 class="pl" style="color: blueviolet;">Danh Sách Phát</h2><br>
         <!-- <div class="table-border"> -->
@@ -229,7 +220,7 @@
                     Annette Black
                   </div>
                 </td>
-                <td><span class="badge-pending">1.000.000 view</span></td>
+                <td id="tim"><a href=""><img src="img/svg/timxanh.png" alt=""></a></td>
               </tr>
             </tbody>
           </table>
@@ -240,14 +231,14 @@
           <div class="top-cat-title">
             <h3>Bảng xếp hạng</h3>
           </div>
-          <ul class="top-cat-list">
+          <ul class="top-cat-list bxh">
             <li>
               <a href="##">
-                <div class="top-cat-list__title">
-                  Lifestyle <span>10.2k</span>
+                <div class="top-cat-list__title purple" >
+                  Trú Mưa <span class="purple">Top 1</span>
                 </div>
                 <div class="top-cat-list__subtitle">
-                  Dailiy lifestyle articles <span class="purple">+472 comment</span>
+                  HKT<span class="purple">+472 view</span>
                 </div>
               </a>
             </li>

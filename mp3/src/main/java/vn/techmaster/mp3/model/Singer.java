@@ -48,7 +48,7 @@ public class Singer implements Serializable {
   
     @JsonGetter(value = "songs")
     @Transient
-    public Map<String, String> getStudents() {
+    public Map<String, String> getSingers() {
       Map<String, String> songView = new HashMap<>();
       songSingers.stream().forEach( songSinger -> {
                songView.put(songSinger.getSong().getId(), songSinger.getSong().getName());

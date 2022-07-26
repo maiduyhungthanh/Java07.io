@@ -15,8 +15,8 @@ public class AppRunner implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-      songSingerService.generateSongSinger();
-      userServiceImpl.generateUser();
+      // songSingerService.generateSongSinger();
+      // userServiceImpl.generateUser();
   }
 
 }

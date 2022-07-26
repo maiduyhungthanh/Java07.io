@@ -34,13 +34,10 @@ private Song song;
 @JoinColumn(name = "singer_id")
 private Singer singer;
 
-private Integer view;
-
-public SongSinger (Song song,Singer singer,Integer view){
+public SongSinger (Song song,Singer singer){
     this.id = UUID.randomUUID().toString();
     this.song = song;
     this.singer = singer;
-    this.view = view;
 }
 
 }

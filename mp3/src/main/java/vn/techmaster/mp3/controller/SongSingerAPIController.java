@@ -25,8 +25,9 @@ import vn.techmaster.mp3.model.Song;
 import vn.techmaster.mp3.request.CategoryRequest;
 import vn.techmaster.mp3.request.SingerRequest;
 import vn.techmaster.mp3.request.SongRequest;
+import vn.techmaster.mp3.service.FileCategoryService;
 import vn.techmaster.mp3.service.FileMp3Service;
-import vn.techmaster.mp3.service.FileService;
+import vn.techmaster.mp3.service.FileSingerService;
 import vn.techmaster.mp3.service.FileSongService;
 import vn.techmaster.mp3.service.SongSingerService;
 
@@ -37,11 +38,13 @@ public class SongSingerAPIController {
     @Autowired
     SongSingerService songSingerService;
     @Autowired
-    private FileService fileService;
+    private FileSingerService fileSingerService;
     @Autowired
     private FileMp3Service fileMp3Service;
     @Autowired
     private FileSongService fileSongService;
+    @Autowired
+    private FileCategoryService fileCategoryService;
 
     // all ca sỹ
     @Operation(summary = "tất cả ca sỹ")
@@ -79,7 +82,7 @@ public class SongSingerAPIController {
     @Operation(summary = "Sửa ảnh ca sỹ")
     @PostMapping("/singer/files/{id}")
     public ResponseEntity<?> Uploadfile(@PathVariable String id, @ModelAttribute("file") MultipartFile file) {
-        String path = fileService.uploadfile(id, file);
+        String path = fileSingerService.uploadfile(id, file);
         return ResponseEntity.ok(path);
     }
 
@@ -87,7 +90,7 @@ public class SongSingerAPIController {
     @Operation(summary = "link ảnh cho ca sỹ vừa mới đc sửa")
     @GetMapping("/singer/files/{id}/{fileName}")
     public ResponseEntity<?> readFile(@PathVariable String id, @PathVariable String fileName) {
-        byte[] bytes = fileService.readFile(id, fileName);
+        byte[] bytes = fileSingerService.readFile(id, fileName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
     }
 
@@ -95,7 +98,7 @@ public class SongSingerAPIController {
     @PostMapping("/singer/image")
     @Operation(summary = "Lưu ảnh ca sỹ mới")
     public ResponseEntity<?> UploadImageSinger(@ModelAttribute("file") MultipartFile file) {
-        String path = fileService.uploadImages(file);
+        String path = fileSingerService.uploadImages(file);
         return ResponseEntity.ok(path);
     }
 
@@ -103,7 +106,7 @@ public class SongSingerAPIController {
     @Operation(summary = "link ảnh cho ca sỹ vừa thêm mới")
     @GetMapping("/singer/image/{fileName}")
     public ResponseEntity<?> readImageSinger(@PathVariable String fileName) {
-        byte[] bytes = fileService.readImage(fileName);
+        byte[] bytes = fileSingerService.readImage(fileName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
     }
 
@@ -214,47 +217,79 @@ public class SongSingerAPIController {
 
     // tim kiem theo Keywork
     @Operation(summary = "tìm kiếm theo Keywork")
-    @GetMapping("/songs")
-    public ResponseEntity<?> listSongKeyWork(@RequestParam String keywork) {
-        List<Song> listSong = songSingerService.songByKeyWord(keywork);
+    @GetMapping("/songByKeyword")
+    public ResponseEntity<?> listSongKeyWord(@RequestParam String keyword) {
+        List<Song> listSong = songSingerService.songByKeyWord(keyword);
         return ResponseEntity.ok(listSong);
     }
 
-    //List the loai
+    // -------------------------------------------------------------------------------------------------------------------
+    // List the loai
     @Operation(summary = "danh sách Category")
     @GetMapping("/category")
     public ResponseEntity<?> listAlbum() {
         List<Category> listCategory = songSingerService.getCategoryAll();
         return ResponseEntity.ok(listCategory);
     }
-    //Category chi tiet
+
+    // Category chi tiet
     @Operation(summary = "Category detail")
     @GetMapping("/category/{id}")
     public ResponseEntity<?> AlbumById(@PathVariable String id) {
         Category category = songSingerService.getCategoryById(id);
         return ResponseEntity.ok(category);
     }
-    //List Song theo thế loại
+
+    // List Song theo thế loại
     @Operation(summary = "danh sách bài hát theo thể loại")
     @GetMapping("/category/song/{id}")
     public ResponseEntity<?> listSongbyCategory(@PathVariable String id) {
         List<Song> songs = songSingerService.getSongByCategory(id);
         return ResponseEntity.ok(songs);
     }
-    //Add Category
+
+    // Add Category
     @Operation(summary = "add thể loại")
     @PostMapping("/category")
     public ResponseEntity<?> addCategory(@RequestBody CategoryRequest request) {
         Category category = songSingerService.categoryAdd(request);
         return ResponseEntity.ok(category);
     }
-    //Delete Category
+
+    // Delete Category
     @Operation(summary = "xóa category")
     @DeleteMapping(value = "/category/delete/{id}")
     public ResponseEntity<?> deleteCategoryByID(@PathVariable String id) {
         songSingerService.deleteCategory(id);
         return ResponseEntity.ok(songSingerService.getCategoryAll());
     }
-    //Edit Category
-    
+
+    // Edit Category
+    @Operation(summary = "Sửa category")
+    @PostMapping("/category-save")
+    public ResponseEntity<?> updateCategory(@RequestBody CategoryRequest request) {
+        Category category = songSingerService.updateCategory(request);
+        return ResponseEntity.ok(category);
+    }
+
+    // lưu ảnh update của album
+    @Operation(summary = "Sửa ảnh album")
+    @PostMapping("/category/files/{id}")
+    public ResponseEntity<?> UploadfileCategory(@PathVariable String id, @ModelAttribute("file") MultipartFile file) {
+        String path = fileCategoryService.uploadfile(id, file);
+        return ResponseEntity.ok(path);
+    }
+
+    // link ảnh update album
+    @Operation(summary = "link ảnh cho album vừa mới đc sửa")
+    @GetMapping("/category/files/{id}/{fileName}")
+    public ResponseEntity<?> readFileCategory(@PathVariable String id, @PathVariable String fileName) {
+        byte[] bytes = fileCategoryService.readFile(id, fileName);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+    }
+    //top Song
+    @GetMapping("/topsong")
+    public ResponseEntity<?> topSong(){
+        return ResponseEntity.ok(songSingerService.topSong());
+    }
 }
