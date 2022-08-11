@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/","/singer","/singer|{id}","/song|{id}","/registration/**","/tendangnhap","/validate/**","/song**","/album","/album|{id}").permitAll()
+		.antMatchers("/","/contacts","/singer","/singer|{id}","/song|{id}","/registration/**","/tendangnhap","/validate/**","/song**","/album","/album|{id}").permitAll()
 		.antMatchers("/user|**").access("hasAnyRole('ROLE_USER')")
 		.antMatchers("/addsong","/addsinger","/singer-edit|{id}","/song-edit|{id}","/addalbum","/album-edit|{id}").access("hasAnyRole('ROLE_OPERATOR')")
 		.antMatchers("/quantrivien").access("hasAnyRole('ROLE_ADMIN')")

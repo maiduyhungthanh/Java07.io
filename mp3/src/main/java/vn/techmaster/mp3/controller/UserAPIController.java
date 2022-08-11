@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import io.swagger.v3.oas.annotations.Operation;
 import vn.techmaster.mp3.model.User;
+import vn.techmaster.mp3.request.CumentiRequest;
 import vn.techmaster.mp3.request.RoleRequest;
 import vn.techmaster.mp3.request.UserLikeSong;
 import vn.techmaster.mp3.request.UserRequest;
@@ -30,6 +31,11 @@ public class UserAPIController {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
+    @Operation(summary = "User chi tiết")
+    @GetMapping("user/{id}")
+    public ResponseEntity<?> UserById(@PathVariable String id){
+        return ResponseEntity.ok(userServiceImpl.UserById(id));
+    }
     // -------------------------------------------------------------------------------------------------------------------
     // Thay Avatar User
     @Operation(summary = "Thay Avatar User")
@@ -48,7 +54,7 @@ public class UserAPIController {
     }
 
     // sửa User
-    @Operation(summary = "sửa Song")
+    @Operation(summary = "sửa User")
     @PostMapping("/user-save")
     public ResponseEntity<?> updateSong(@RequestBody UserRequest request) {
         User user = userServiceImpl.updateUser(request);
@@ -92,4 +98,11 @@ public class UserAPIController {
     public ResponseEntity<?> deleteUser(@RequestBody RoleRequest request) {
         return ResponseEntity.ok(userServiceImpl.deleteUser(request));
     }
+
+    // đóng góp ý kiến
+    @PostMapping("/cumenti")
+	public String getCumenti(@RequestBody CumentiRequest request){
+		userServiceImpl.sendCumenti(request);
+		return "redirect:/";
+	}
 }

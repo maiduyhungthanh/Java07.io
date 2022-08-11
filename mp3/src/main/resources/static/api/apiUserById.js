@@ -157,7 +157,15 @@ for (let i = link.length - 1; i >= 0; i--) {
 const ID = x.reverse().join("").replace('?', '');
 console.log(ID)
 
-
+//Lấy dữ liệu API_SingerByID
+const getUserbyId = async ID => {
+  try {
+    let res = await axios.get(`http://localhost:1993/api/user/${ID}`)
+    renderUserbyId(res.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 //thay đổi Avatar User
 const uploadFileAPI = file => {
   const formData = new FormData()
@@ -173,6 +181,11 @@ avatarEl.addEventListener("change", async function (event) {
   }
   console.log(file)
 })
+const renderUserbyId = s => {
+    hoEl.value = s.firstName,
+    nameEl.value = s.lastName,
+    emailEl.value = s.email
+    avatarPreview.src = `${s.avatar}`
 btnSave.addEventListener("click", async function () {
   try {
     let res = await axios.post("http://localhost:1993/api/user-save", {
@@ -188,5 +201,6 @@ btnSave.addEventListener("click", async function () {
     alert("Cập Nhập Thật Bại")
   }
 })
-
+}
+getUserbyId(ID);
 

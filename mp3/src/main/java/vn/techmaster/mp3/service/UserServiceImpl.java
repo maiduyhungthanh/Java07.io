@@ -25,6 +25,7 @@ import vn.techmaster.mp3.model.User;
 import vn.techmaster.mp3.repository.SongRepo;
 import vn.techmaster.mp3.repository.SongUserRepo;
 import vn.techmaster.mp3.repository.UserRepository;
+import vn.techmaster.mp3.request.CumentiRequest;
 import vn.techmaster.mp3.request.RoleRequest;
 import vn.techmaster.mp3.request.UserLikeSong;
 import vn.techmaster.mp3.request.UserRegistrationRequest;
@@ -91,7 +92,13 @@ public class UserServiceImpl implements UserService {
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
-
+	// Đóng góp ý kiến 
+	public void sendCumenti(CumentiRequest cumentiRequest){
+		if(cumentiRequest.getEmail() == null){
+            cumentiRequest.setEmail("Người Ẩn Danh");
+        }
+		emailService.sendCumenti(cumentiRequest.getEmail(), cumentiRequest.getText());
+	}
 	// Xác nhận tài khoản qua email
 	public void getValidate(String id) {
 		User user = userRepository.findById(id).get();
@@ -113,7 +120,10 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAllUser() {
 		return userRepository.findAll();
 	}
-
+	//User Detail
+	public User UserById(String id){
+		return userRepository.findById(id).get();
+	}
 	// Song yeu thích trong User
 	public Song getSongLike(UserLikeSong userLikeSong) {
 		for (SongUser songUser : songUserRepo.findAll()) {
@@ -150,18 +160,6 @@ public class UserServiceImpl implements UserService {
 		return songUser;
 	}
 
-	// thay doi chuc nang Role
-	public void changeRole(String id, String role) {
-		User user = userRepository.findById(id).get();
-		if (role.equals("admin")) {
-			user.setRoles(Arrays.asList(new Role("ROLE_ADMIN"), new Role("ROLE_USER"), new Role("ROLE_OPERATOR")));
-		} else if (role.equals("operator")) {
-			user.setRoles(Arrays.asList(new Role("ROLE_USER"), new Role("ROLE_OPERATOR")));
-		} else if (role.equals("user")) {
-			user.setRoles(Arrays.asList(new Role("ROLE_USER")));
-		}
-		userRepository.save(user);
-	}
 		// thay doi chuc nang Role
 		public User changeRole(RoleRequest roleRequest) {
 			User user = userRepository.findById(roleRequest.getId_user()).get();

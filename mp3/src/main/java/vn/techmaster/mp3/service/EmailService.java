@@ -20,4 +20,13 @@ public class EmailService {
         // Send Message!
         sender.send(message);
     }
+
+    public void sendCumenti (String email, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+       
+        message.setTo("maiduyhungthanh@gmail.com");
+        message.setSubject("Đóng góp ý kiến");
+        message.setText("ý kiến từ "+email+" : \n"+text);
+        sender.send(message);
+    }
 }

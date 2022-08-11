@@ -213,26 +213,28 @@ const renderSinger = arr => {
         Singer_id.push(s.id);
     }
 }
-
-    //    let res_singer = await axios.get("http://localhost:1993/api/singer")
-    //     for (let i = 0; i < res_singer.data.length; i++) {
-    //         if (singerEl[0].value == res_singer.data[i].id ||
-    //             singerEl[1].value == res_singer.data[i].id ||
-    //             singerEl[2].value == res_singer.data[i].id) {
-    //             listSinger.push(res_singer.data[i].id)
-    //         }
-    //     }
-    //     let res_album = await axios.get("http://localhost:1993/api/category")
-    //     for (let i = 0; i < res_album.data.length; i++) {
-    //         if (albumEl[0].value == res_album.data[i].id ||
-    //             albumEl[1].value == res_album.data[i].id) {
-    //             listAlbum.push(res_album.data[i].id)
-    //         }
-    //     }
-        // id_singer.innerHTML += listSinger.join("/")
-        // id_album.innerHTML += listAlbum.join("/")
-
-
+// lam select Album
+const getAlbum = async () => {
+  try {
+      let res = await axios.get("http://localhost:1993/api/category")
+      console.log(res.data);
+      renderAbum(res.data)
+  } catch (error) {
+      console.log(error)
+  }
+}
+const renderAbum = arr => {
+  let html = `<option value="123">Không</option>`
+  for (let i = 0; i < arr.length; i++) {
+      const d = arr[i]
+      html += `<option value="${d.id}">${d.name}</option>`
+  }
+  for (let j = 0; j < albumEl.length; j++) {
+      const s = albumEl[j]
+      s.innerHTML = html;
+      Album_id.push(s.id);
+  }
+}
 let count1 = 0;
 let count2 = 0;
 const renderSong = s => {
@@ -266,7 +268,7 @@ const renderSong = s => {
 }
 const init = async () => {
     await getSinger()
-    
+    await getAlbum()
     getSong(ID)
 }
 init()

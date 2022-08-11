@@ -64,10 +64,11 @@ public class UserController {
 		}
 		return "userLikeSong";
 	}
-	@Operation(summary = "kích hoạt user thông qua email")
+	@Operation(summary = "thay đổi role người dùng")
 	@GetMapping("/role/{role}/{id}")
 	public String changeRole(@PathVariable String id,@PathVariable String role){
 		// userServiceImpl.changeRole(id,role);
 		return  "redirect:/quantrivien";
 	}
+
 }
