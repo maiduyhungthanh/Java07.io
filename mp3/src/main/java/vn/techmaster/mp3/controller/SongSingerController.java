@@ -92,12 +92,6 @@ public class SongSingerController {
         return "songByKeyword";
     }
 
-    // blog
-    @GetMapping("/blog")
-    public String blog() {
-        return "blog";
-    }
-
     // album
     @GetMapping("/album")
     public String category() {

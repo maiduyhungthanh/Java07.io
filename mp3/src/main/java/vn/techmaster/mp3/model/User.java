@@ -90,6 +90,53 @@ public class User {
 	   );
 	   return songs;
 	 }
+
+	 	 // Một User có nhiều post
+		  @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+		  @JsonIgnore
+		  private List<Post> posts = new ArrayList<>();
+
+		  @JsonGetter(value = "posts")
+		  @Transient
+		  public List<String> oneUserManyPosts() {
+			List<String> MapPost = new ArrayList<>();
+			posts.stream().forEach( post -> {
+				MapPost.add(post.getId());
+					}
+			);
+			return MapPost;
+		  }
+
+	 public List<Post> getPosts() {
+			return posts;
+		}
+
+		public void setPosts(List<Post> posts) {
+			this.posts = posts;
+		}
+
+		public List<Comment> getComments() {
+			return comments;
+		}
+
+		public void setComments(List<Comment> comments) {
+			this.comments = comments;
+		}
+	// Một User có nhiều binh luận
+	 @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	 @JsonIgnore
+	 private List<Comment> comments = new ArrayList<>();
+   
+	 @JsonGetter(value = "comments")
+	 @Transient
+	 public Map<String, String> getUsersComment() {
+	   Map<String, String> posts = new HashMap<>();
+	   comments.stream().forEach( comment -> {
+				posts.put(comment.getId(), comment.getText());
+			   }
+	   );
+	   return posts;
+	 }
 	public String getId() {
 		return id;
 	}

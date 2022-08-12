@@ -1,6 +1,6 @@
-const API_Blog = "http://localhost:1993/api/post";
-let list_blog = [];
-const singerAll = document.querySelector(".list_singer");
+const API_Singer = "http://localhost:1993/api/category";
+const nameEl = document.getElementById("nameEl")
+const btnSave = document.getElementById("btn-save")
 //Bang xep hang
 const bxh = document.querySelector(".bxh")
 const getBXH = async () => {
@@ -78,20 +78,16 @@ const getListAlbum = async () => {
   albumAll.innerHTML = html;
 }
 getListAlbum();
+var id_user;
 //lấy API Người dùng
 const anhdaidien = document.getElementById("anhdaidien")
 const dangnhap = document.getElementById("dangnhap")
 const dangky = document.getElementById("dangky")
 const table_anhdaidien = document.getElementById("table-anhdaidien");
-const admin = document.getElementById("admin")
-const blogmoi = document.getElementById("blogmoi")
+const noidung = document.getElementById("noidung");
 const getUser = async () => {
   let res = await axios.get("http://localhost:1993/tendangnhap");
   user = res.data;
-  
-  if(user.roles == null){
-    blogmoi.style.display = `none`;
-  }
   id_user = user.id;
   var checkRoles ;
   for (let i = 0; i < user.roles.length; i++) {
@@ -145,25 +141,23 @@ const getUser = async () => {
               </button></a>
     `
   }
+  //Thêm Album
+
+btnSave.addEventListener("click", async function (event) {
+    try {     
+        let res = await axios.post("http://localhost:1993/api/blog/add", {
+            title: nameEl.value,
+            content: noidung.value,
+            user_id: user.id
+        })
+          alert("Đã thêm Blog thành công")  
+          window.location.href = "/blog"
+    } catch (error) {
+      alert("thêm Blog Thất Bại")
+      window.location.href = "/blog"
+    }
+})
 }
 getUser();
 
-//lấy API Singer
-const getListSinger = async () => {
-   
-        let res = await axios.get("http://localhost:1993/api/blog");
-         list_blog = res.data;
-        console.log(list_blog.length);
-        let html = "";
-        for (let i = 0; i < list_blog.length; i++) {
-            let s = list_blog[i];
-            html += `
-            <div class="singerEl" style="margin:20px;"> <a href="/blog|${s.id}" style="color:blueviolet;"><img src="${s.user.avatar}" alt="" style="width: 120px; height: 120px;"><br>
-            ${s.title}</a><br><span style="color:red">tác giả: ${s.user.firstName} ${s.user.lastName}</span> </div>
-            `
-        }
-        singerAll.innerHTML=html
-}
 
-
-getListSinger();

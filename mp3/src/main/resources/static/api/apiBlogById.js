@@ -1,5 +1,4 @@
 const API_Blog = "http://localhost:1993/api/post";
-let list_blog = [];
 const singerAll = document.querySelector(".list_singer");
 //Bang xep hang
 const bxh = document.querySelector(".bxh")
@@ -84,14 +83,21 @@ const dangnhap = document.getElementById("dangnhap")
 const dangky = document.getElementById("dangky")
 const table_anhdaidien = document.getElementById("table-anhdaidien");
 const admin = document.getElementById("admin")
-const blogmoi = document.getElementById("blogmoi")
+const userComment = document.getElementById("user")
 const getUser = async () => {
   let res = await axios.get("http://localhost:1993/tendangnhap");
   user = res.data;
-  
-  if(user.roles == null){
-    blogmoi.style.display = `none`;
+  for (let j = 0; j < user.posts.length; j++) {
+    if(user.posts[j]== id){
+      admin.style.display = ``;
+    }
   }
+  if(user.roles == null){
+    userComment.style.display = `none`;
+  }
+  // if(user.roles == null||user.roles.length==1){
+  //   admin.style.display = `none`;
+  // }
   id_user = user.id;
   var checkRoles ;
   for (let i = 0; i < user.roles.length; i++) {
@@ -145,25 +151,61 @@ const getUser = async () => {
               </button></a>
     `
   }
+  //binh luận
+btnbinhluan.addEventListener("click", async function (event) {
+  try {
+      let res = await axios.post(`http://localhost:1993/api/comment`, {
+          user_id:user.id,
+          post_id:id,
+          text:binhluan.value
+      })
+      if (res.data) {
+          alert("Đã Bình luận Thành Công")
+          window.location.href = `/blog|${id}`
+      }
+  } catch (error) {
+    alert("Bình luận Thật Bại")
+  }
+})
 }
 getUser();
-
-//lấy API Singer
-const getListSinger = async () => {
-   
-        let res = await axios.get("http://localhost:1993/api/blog");
-         list_blog = res.data;
-        console.log(list_blog.length);
-        let html = "";
-        for (let i = 0; i < list_blog.length; i++) {
-            let s = list_blog[i];
-            html += `
-            <div class="singerEl" style="margin:20px;"> <a href="/blog|${s.id}" style="color:blueviolet;"><img src="${s.user.avatar}" alt="" style="width: 120px; height: 120px;"><br>
-            ${s.title}</a><br><span style="color:red">tác giả: ${s.user.firstName} ${s.user.lastName}</span> </div>
-            `
-        }
-        singerAll.innerHTML=html
+//lấy id
+var link = location.href;
+var x = [];
+for (let i = link.length - 1; i >= 0; i--) {
+    if (link[i] == "C") {
+        break;
+    }
+    x.push(link[i]);
 }
-
-
-getListSinger();
+const id = x.reverse().join("").replace('?', '');
+console.log(id)
+//lấy API Singer
+const title = document.getElementById("title");
+const tacgia = document.getElementById("tacgia");
+const content = document.querySelector(".content")
+const comments = document.getElementById("comments")
+const binhluan = document.getElementById("binhluan");
+const btnbinhluan = document.getElementById("btnbinhluan");
+const getBlog = async () => {
+   let res = await axios.get(`http://localhost:1993/api/blog/${id}`);
+         var b = res.data;
+title.innerHTML =  b.title;
+tacgia.innerHTML = "tác giả: " + b.user.firstName + b.user.lastName;
+content.innerHTML = b.content
+var html = ``
+for (let i = 0; i < b.comments.length; i++) {
+ html += `<div style="width: 550px;" >
+ <pre style="color: red;margin-bottom: 10px;"><img src="${b.users[i].avatar}" alt="" width="30px" height="30px" style="border-radius: 50%;">${b.users[i].firstName} ${b.users[i].lastName}</pre>                    
+ <p style="color: pink;">${b.comments[i]}</p>
+</div><br>`
+}
+comments.innerHTML = html;
+}
+getBlog();
+const xoablog = document.querySelector(".xoablog")
+xoablog.addEventListener("click", async function () {
+  alert("Đã Xóa Bài Viết Thành Công")
+  let res = await axios.delete(`http://localhost:1993/api/blog/delete/${id}`)
+  window.location.href = "/blog"
+})

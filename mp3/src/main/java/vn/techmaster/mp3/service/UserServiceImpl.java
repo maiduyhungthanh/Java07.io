@@ -17,15 +17,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import vn.techmaster.mp3.model.Comment;
+import vn.techmaster.mp3.model.Post;
 import vn.techmaster.mp3.model.Role;
 import vn.techmaster.mp3.model.Song;
 import vn.techmaster.mp3.model.SongUser;
 import vn.techmaster.mp3.model.State;
 import vn.techmaster.mp3.model.User;
+import vn.techmaster.mp3.repository.CommentRepo;
+import vn.techmaster.mp3.repository.PostRepo;
 import vn.techmaster.mp3.repository.SongRepo;
 import vn.techmaster.mp3.repository.SongUserRepo;
 import vn.techmaster.mp3.repository.UserRepository;
+import vn.techmaster.mp3.request.CommentRequest;
 import vn.techmaster.mp3.request.CumentiRequest;
+import vn.techmaster.mp3.request.PostRequest;
 import vn.techmaster.mp3.request.RoleRequest;
 import vn.techmaster.mp3.request.UserLikeSong;
 import vn.techmaster.mp3.request.UserRegistrationRequest;
@@ -43,6 +49,10 @@ public class UserServiceImpl implements UserService {
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	EmailService emailService;
+	@Autowired
+    private CommentRepo commentRepo;
+    @Autowired
+    private PostRepo postRepo;
 
 	@Transactional
 	public void generateUser() {
@@ -57,9 +67,21 @@ public class UserServiceImpl implements UserService {
 		admin.setState(State.ACTIVE);
 		operator.setState(State.ACTIVE);
 		user.setState(State.ACTIVE);
+		Post post1 = new Post("Tiểu sử Ưng Hoàng Phúc", "Ưng Hoàng Phúc tên thật là Nguyễn Quốc Thanh (sinh ngày 18 tháng 8 năm 1981 tại xã Kiến An, Chợ Mới, An Giang) là một nam ca sĩ, diễn viên, nhà sản xuất điện ảnh, vũ công người Việt Nam", admin);
+		Post post2 = new Post("Tiểu sử Quang Vinh", "Quang Vinh được phát hiện năng khiếu ca hát từ nhỏ, năm 11 tuổi Quang Vinh tham gia sinh hoạt ở đội Sơn Ca Nhà Thiếu Nhi Quận 1", admin);
+		Post post3 = new Post("Tiểu sử Khánh Phương", "Khánh Phương (tên đầy đủ Phạm Khánh Phương, sinh ngày 4 tháng 11 năm 1981) là một ca sĩ nhạc trẻ Việt Nam, đồng thời còn là người sáng lập và cựu thành viên của nhóm nhạc MP5 (2001 - 2005)", operator);
+		Comment cm1 = new Comment("idol 1 thời", post1, user);
+		Comment cm2 = new Comment("tuổi thơ của 8x-9x", post2, user);
+	
 		userRepository.save(admin);
 		userRepository.save(operator);
 		userRepository.save(user);
+	
+		postRepo.save(post1);
+		postRepo.save(post2);
+		postRepo.save(post3);
+		commentRepo.save(cm1);
+		commentRepo.save(cm2);
 	}
 
 	public UserServiceImpl(UserRepository userRepository) {
@@ -165,13 +187,13 @@ public class UserServiceImpl implements UserService {
 			User user = userRepository.findById(roleRequest.getId_user()).get();
 			user.setRoles(null);
 			if (roleRequest.getValue_role().equals("operator")) {
-				User updateUser = new User(user.getId(),user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getAvatar(), user.getState(), Arrays.asList(new Role("ROLE_USER"),new Role("ROLE_OPERATOR")), user.getSongUsers());
+				User updateUser = new User(user.getId(),user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getAvatar(), user.getState(), Arrays.asList(new Role("ROLE_USER"),new Role("ROLE_OPERATOR")), user.getSongUsers(),user.getPosts(),user.getComments());
 				userRepository.save(updateUser);
 			}else if(roleRequest.getValue_role().equals("user")){
-				User updateUser = new User(user.getId(),user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getAvatar(), user.getState(), Arrays.asList(new Role("ROLE_USER")), user.getSongUsers());
+				User updateUser = new User(user.getId(),user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getAvatar(), user.getState(), Arrays.asList(new Role("ROLE_USER")), user.getSongUsers(),user.getPosts(),user.getComments());
 				userRepository.save(updateUser);
 			}else if(roleRequest.getValue_role().equals("admin")){
-				User updateUser = new User(user.getId(),user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getAvatar(), user.getState(), Arrays.asList(new Role("ROLE_USER"),new Role("ROLE_OPERATOR"),new Role("ROLE_ADMIN")), user.getSongUsers());
+				User updateUser = new User(user.getId(),user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getAvatar(), user.getState(), Arrays.asList(new Role("ROLE_USER"),new Role("ROLE_OPERATOR"),new Role("ROLE_ADMIN")), user.getSongUsers(),user.getPosts(),user.getComments());
 				userRepository.save(updateUser);
 			}
 			return user;
@@ -182,5 +204,32 @@ public class UserServiceImpl implements UserService {
 			user.setRoles(null);
 			userRepository.delete(user);
 			return user;
+		}
+
+		// tất cả các bài post
+		public List<Post> getPostAll(){
+			return postRepo.findAll();
+		}
+		// post theo id
+		public Post getPostById(String id){
+			return postRepo.findById(id).get();
+		}
+
+		// user comment trong bài post
+		public Comment getCommentNew(CommentRequest commentRequest){
+			Comment commentNew = new Comment(commentRequest.getText(),postRepo.findById(commentRequest.getPost_id()).get(),userRepository.findById(commentRequest.getUser_id()).get());
+			commentRepo.save(commentNew);
+			return commentNew;
+		}
+		// user viết post mới
+		public Post getPostNew (PostRequest postRequest){
+			Post postNew = new Post(postRequest.getTitle(), postRequest.getContent(), userRepository.findById(postRequest.getUser_id()).get());
+			postRepo.save(postNew);
+			return postNew;
+		}
+		// xóa bài Post
+		public Post RemovePost(String id){
+			postRepo.deleteById(id);
+			return postRepo.findById(id).get();
 		}
 }
