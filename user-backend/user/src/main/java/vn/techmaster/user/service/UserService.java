@@ -25,8 +25,8 @@ public class UserService {
     private EmailService emailService;
 
     public UserService(){
-        users.add(new User(1,"Thanh","maiduyhungthanh@gmail.com","0936439200","Thành phố Hà Nội",null,"abcxyz"));
-        users.add(new User(2,"Nguyen","thanhotok52@gmail.com","0936439200","Tỉnh Nam Định",null,"abc123"));
+        users.add(new User(1,"Thanh","maiduyhungthanh@gmail.com","0936439200","Thành phố Hà Nội",null,"123456"));
+        users.add(new User(2,"Nguyen","thanhotok52@gmail.com","0936439200","Tỉnh Nam Định",null,"123456"));
     }
 
     public List<UserDto> getUsers() {
