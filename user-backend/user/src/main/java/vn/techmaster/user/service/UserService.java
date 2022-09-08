@@ -3,7 +3,6 @@ package vn.techmaster.user.service;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import vn.techmaster.user.dto.UserDto;
 import vn.techmaster.user.exception.BadRequestException;
 import vn.techmaster.user.exception.NotFoundException;
@@ -26,8 +25,8 @@ public class UserService {
     private EmailService emailService;
 
     public UserService(){
-        users.add(new User(1,"Khiêm","khiem31200@gmail.com","0936439200","Thành phố Hà Nội",null,"abcxyz"));
-        users.add(new User(2,"Khiêmng","khiem31200@gmail.com","0936439200","Tỉnh Nam Định",null,"abc123"));
+        users.add(new User(1,"Thanh","maiduyhungthanh@gmail.com","0936439200","Thành phố Hà Nội",null,"abcxyz"));
+        users.add(new User(2,"Nguyen","thanhotok52@gmail.com","0936439200","Tỉnh Nam Định",null,"abc123"));
     }
 
     public List<UserDto> getUsers() {

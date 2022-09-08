@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch JobHuntApplication",
+            "request": "launch",
+            "mainClass": "vn.techmaster.job_hunt.JobHuntApplication",
+            "projectName": "jpa"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
