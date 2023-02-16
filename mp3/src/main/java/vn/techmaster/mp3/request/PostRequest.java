@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostRequest {
     String title;
-    @Column(length=50000)
+    // @Column(length=50000)
     String content;
     String user_id;
 }

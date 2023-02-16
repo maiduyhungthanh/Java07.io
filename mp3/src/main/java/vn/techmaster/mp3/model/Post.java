@@ -31,7 +31,7 @@ public class Post {
   @Id
   String id;
   String title;
-  @Column(length=50000)
+  // @Column(length=50000)
   String content;
 
   @ManyToOne()
